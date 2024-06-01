@@ -6,12 +6,44 @@ _This plugin was created through the Backstage CLI_
 
 ## Getting started
 
-Add on your `catalog-info.yaml`: 
+### Config plugin
+
+Copy entire project folder to `<backstage-home>/plugins`.
+
+Update `<backstage-home>/packages/app/package.json`:
+
+```json
+  "dependencies": {
+    "@k3tech/k3t-backstage-plugin-frontend-addons": "link:../../plugins/k3t-backstage-plugin-frontend-addons"
+  }
+```
+
+Update `<backstage-home>/packages/app/src/components/catalog/EntityPage.tsx`:
+
+```tsx
+...
+import { EntityAddonsComponent } from '@k3tech/k3t-backstage-plugin-frontend-addons';
+...
+const serviceEntityPage = (
+  <EntityLayout>
+    ...
+    <EntityLayout.Route path="/addons" title="Addons">
+      <EntityAddonsComponent variant="gridItem" />
+    </EntityLayout.Route>
+
+  </EntityLayout>
+);
+```
+
+### Config addons template bindings
+
+Add on component `catalog-info.yaml`: 
 
 ```yaml
 ...
 metadata:
   annotations:
+    ...
     backstage.io/template-origin: template:default/my-template-origin-name
 ```
 
