@@ -37,13 +37,12 @@ const serviceEntityPage = (
 
 ### Config addons template bindings
 
-Add on component `catalog-info.yaml`: 
+Update an `catalog-info.yaml`: 
 
 ```yaml
 ...
 metadata:
   annotations:
-    ...
     backstage.io/template-origin: template:default/my-template-origin-name
 ```
 
@@ -95,9 +94,11 @@ spec:
       input:
         entityRef: ${{ parameters.component_ref }}
 
+    # see 
+    # https://github.com/kode3tech/k3t-backstage-plugin-scaffolder-backend-module-plus/blob/HEAD/exemples.md#varsplus
     - id: vars
       name: Memo Vars
-      action: var
+      action: vars:plus
       input:
         domain_name: ${{ parameters.domain_name }}
         pascal_name: ${{ parameters.domain_name | title | replace(r/[ _,]+/, '') }}
@@ -109,9 +110,11 @@ spec:
       input: 
         vars: ${{ steps.vars.output.result }}
 
+    # see
+    # https://github.com/kode3tech/k3t-backstage-plugin-scaffolder-backend-module-azure-devops/blob/main/exemples.md#gitcloneazure
     - id: source
       name: 'Fetch Source'
-      action: git:checkout:azure
+      action: git:clone:azure
       input:
         defaultBranch: main
         repoUrl: ${{ steps.vars.output.result.repoUrl }}
@@ -125,18 +128,11 @@ spec:
         replace: true
         values: ${{ steps.vars.output.result }}
 
-    - id: debug:fs:read
-      name: Debug Content files 
-      action: debug:fs:read
-      input:
-        files: 
-        - src/ApplicationCore/Domain/Entities/${{ steps.vars.output.result.pascal_name }}.cs
-        - src/ApplicationCore/Domain/Services/Implementations/${{ steps.vars.output.result.pascal_name }}Service.cs
-        - src/ApplicationCore/Domain/Services/I${{ steps.vars.output.result.pascal_name }}Service.cs
-
-    - id: push
-      name: 'Push changes'
-      action: git:push:azure
+    # see
+    # https://github.com/kode3tech/k3t-backstage-plugin-scaffolder-backend-module-azure-devops/blob/main/exemples.md#gitcommitazure
+    - id: commit
+      name: 'Commit and Push changes'
+      action: git:commit:azure
       input:
         createBranch: false
         defaultBranch: "feat/domain-${{ steps['vars'].output.result.pascal_name }}"
