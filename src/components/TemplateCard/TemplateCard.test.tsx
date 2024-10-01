@@ -418,9 +418,7 @@ describe('TemplateCard', () => {
           apis={[
             [
               starredEntitiesApiRef,
-              new DefaultStarredEntitiesApi({
-                storageApi: MockStorageApi.create(),
-              }),
+              new MockStarredEntitiesApi(),
             ],
             [permissionApiRef, new MockPermissionApi(mockAuthorize)],
           ]}
