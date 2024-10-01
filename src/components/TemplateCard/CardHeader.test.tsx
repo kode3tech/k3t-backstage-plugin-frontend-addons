@@ -13,21 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
-import { CardHeader } from './CardHeader';
-import { ThemeProvider } from '@material-ui/core/styles';
-import { lightTheme } from '@backstage/theme';
-import {
-  MockStorageApi,
-  renderInTestApp,
-  TestApiProvider,
-} from '@backstage/test-utils';
-import { starredEntitiesApiRef } from '@backstage/plugin-catalog-react';
-import { DefaultStarredEntitiesApi } from '@backstage/plugin-catalog';
-import Observable from 'zen-observable';
 import { stringifyEntityRef } from '@backstage/catalog-model';
+import { MockStarredEntitiesApi, starredEntitiesApiRef } from '@backstage/plugin-catalog-react';
 import { TemplateEntityV1beta3 } from '@backstage/plugin-scaffolder-common';
+import {
+  renderInTestApp,
+  TestApiProvider
+} from '@backstage/test-utils';
+import { lightTheme } from '@backstage/theme';
+import { ThemeProvider } from '@material-ui/core/styles';
+import { fireEvent, render } from '@testing-library/react';
+import React from 'react';
+import Observable from 'zen-observable';
+import { CardHeader } from './CardHeader';
 
 describe('CardHeader', () => {
   it('should select the correct theme from the theme provider from the header', () => {
@@ -43,9 +41,7 @@ describe('CardHeader', () => {
         apis={[
           [
             starredEntitiesApiRef,
-            new DefaultStarredEntitiesApi({
-              storageApi: MockStorageApi.create(),
-            }),
+            new MockStarredEntitiesApi(),
           ],
         ]}
       >
@@ -74,9 +70,7 @@ describe('CardHeader', () => {
         apis={[
           [
             starredEntitiesApiRef,
-            new DefaultStarredEntitiesApi({
-              storageApi: MockStorageApi.create(),
-            }),
+            new MockStarredEntitiesApi(),
           ],
         ]}
       >
@@ -134,9 +128,7 @@ describe('CardHeader', () => {
         apis={[
           [
             starredEntitiesApiRef,
-            new DefaultStarredEntitiesApi({
-              storageApi: MockStorageApi.create(),
-            }),
+            new MockStarredEntitiesApi(),
           ],
         ]}
       >
@@ -163,9 +155,7 @@ describe('CardHeader', () => {
         apis={[
           [
             starredEntitiesApiRef,
-            new DefaultStarredEntitiesApi({
-              storageApi: MockStorageApi.create(),
-            }),
+            new MockStarredEntitiesApi(),
           ],
         ]}
       >
