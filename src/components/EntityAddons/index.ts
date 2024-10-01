@@ -1,1 +1,1 @@
-export { EntityAddonsComponent as EntityAddonsContent } from './EntityAddonsContent';
+export { EntityAddonsComponent as EntityAddonsContent } from './EntityAddons';
