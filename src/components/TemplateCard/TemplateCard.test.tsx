@@ -20,7 +20,6 @@ import {
 } from '@backstage/plugin-catalog-react';
 import {
   MockPermissionApi,
-  MockStorageApi,
   renderInTestApp,
   TestApiProvider,
 } from '@backstage/test-utils';
