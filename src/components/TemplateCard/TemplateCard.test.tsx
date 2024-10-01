@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { DefaultStarredEntitiesApi } from '@backstage/plugin-catalog';
 import {
   entityRouteRef,
+  MockStarredEntitiesApi,
   starredEntitiesApiRef,
 } from '@backstage/plugin-catalog-react';
 import {
@@ -50,9 +50,7 @@ describe('TemplateCard', () => {
         apis={[
           [
             starredEntitiesApiRef,
-            new DefaultStarredEntitiesApi({
-              storageApi: MockStorageApi.create(),
-            }),
+            new MockStarredEntitiesApi(),
           ],
           [permissionApiRef, new MockPermissionApi()],
         ]}
@@ -80,9 +78,7 @@ describe('TemplateCard', () => {
         apis={[
           [
             starredEntitiesApiRef,
-            new DefaultStarredEntitiesApi({
-              storageApi: MockStorageApi.create(),
-            }),
+            new MockStarredEntitiesApi(),
           ],
           [permissionApiRef, new MockPermissionApi()],
         ]}
@@ -112,9 +108,7 @@ describe('TemplateCard', () => {
         apis={[
           [
             starredEntitiesApiRef,
-            new DefaultStarredEntitiesApi({
-              storageApi: MockStorageApi.create(),
-            }),
+            new MockStarredEntitiesApi(),
           ],
           [permissionApiRef, new MockPermissionApi()],
         ]}
@@ -142,9 +136,7 @@ describe('TemplateCard', () => {
         apis={[
           [
             starredEntitiesApiRef,
-            new DefaultStarredEntitiesApi({
-              storageApi: MockStorageApi.create(),
-            }),
+            new MockStarredEntitiesApi(),
           ],
           [permissionApiRef, new MockPermissionApi()],
         ]}
@@ -178,9 +170,7 @@ describe('TemplateCard', () => {
         apis={[
           [
             starredEntitiesApiRef,
-            new DefaultStarredEntitiesApi({
-              storageApi: MockStorageApi.create(),
-            }),
+            new MockStarredEntitiesApi(),
           ],
           [permissionApiRef, new MockPermissionApi()],
         ]}
@@ -218,9 +208,7 @@ describe('TemplateCard', () => {
         apis={[
           [
             starredEntitiesApiRef,
-            new DefaultStarredEntitiesApi({
-              storageApi: MockStorageApi.create(),
-            }),
+            new MockStarredEntitiesApi(),
           ],
           [permissionApiRef, new MockPermissionApi()],
         ]}
@@ -263,9 +251,7 @@ describe('TemplateCard', () => {
         apis={[
           [
             starredEntitiesApiRef,
-            new DefaultStarredEntitiesApi({
-              storageApi: MockStorageApi.create(),
-            }),
+            new MockStarredEntitiesApi(),
           ],
           [permissionApiRef, new MockPermissionApi()],
         ]}
@@ -312,9 +298,7 @@ describe('TemplateCard', () => {
         apis={[
           [
             starredEntitiesApiRef,
-            new DefaultStarredEntitiesApi({
-              storageApi: MockStorageApi.create(),
-            }),
+            new MockStarredEntitiesApi(),
           ],
           [permissionApiRef, new MockPermissionApi()],
         ]}
@@ -355,9 +339,7 @@ describe('TemplateCard', () => {
         apis={[
           [
             starredEntitiesApiRef,
-            new DefaultStarredEntitiesApi({
-              storageApi: MockStorageApi.create(),
-            }),
+            new MockStarredEntitiesApi(),
           ],
           [permissionApiRef, new MockPermissionApi()],
         ]}
@@ -395,9 +377,7 @@ describe('TemplateCard', () => {
         apis={[
           [
             starredEntitiesApiRef,
-            new DefaultStarredEntitiesApi({
-              storageApi: MockStorageApi.create(),
-            }),
+            new MockStarredEntitiesApi(),
           ],
           [permissionApiRef, new MockPermissionApi()],
         ]}
