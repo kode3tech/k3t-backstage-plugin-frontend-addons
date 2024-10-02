@@ -1,22 +1,10 @@
-# entity-addons
+# Entity Addons
 
-Welcome to the entity-addons plugin!
-
-_This plugin was created through the Backstage CLI_
+With this plugin will able to filter and extend components capabilities with *Addons* concept.
 
 ## Getting started
 
 ### Config plugin
-
-Copy entire project folder to `<backstage-home>/plugins`.
-
-Update `<backstage-home>/packages/app/package.json`:
-
-```json
-  "dependencies": {
-    "@k3tech/k3t-backstage-plugin-frontend-addons": "link:../../plugins/k3t-backstage-plugin-frontend-addons"
-  }
-```
 
 Update `<backstage-home>/packages/app/src/components/catalog/EntityPage.tsx`:
 
