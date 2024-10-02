@@ -2,6 +2,8 @@
 
 With this plugin will able to filter and extend components capabilities with *Addons* concept.
 
+![alt text](image.png)
+
 ## Getting started
 
 ### Config plugin
