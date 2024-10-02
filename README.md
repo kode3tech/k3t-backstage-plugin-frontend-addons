@@ -10,15 +10,15 @@ Update `<backstage-home>/packages/app/src/components/catalog/EntityPage.tsx`:
 
 ```tsx
 ...
-import { EntityAddonsComponent } from '@k3tech/k3t-backstage-plugin-frontend-addons';
+import { EntityAddonsContent } from '@k3tech/backstage-plugin-frontend-addons';
 ...
-const serviceEntityPage = (
+const defaultEntityPage = (
   <EntityLayout>
     ...
     <EntityLayout.Route path="/addons" title="Addons">
-      <EntityAddonsComponent variant="gridItem" />
+      <EntityAddonsContent variant="gridItem" />
     </EntityLayout.Route>
-
+    
   </EntityLayout>
 );
 ```
