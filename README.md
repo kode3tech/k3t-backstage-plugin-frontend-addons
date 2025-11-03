@@ -33,7 +33,7 @@ Update an `catalog-info.yaml`:
 ...
 metadata:
   annotations:
-    backstage.io/template-origin: template:default/my-template-origin-name
+    backstage.io/template-origin: template:default/my-template-origin
 ```
 
 Create new template like this:
@@ -42,18 +42,18 @@ Create new template like this:
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: my-template-origin-name-addon
+  name: my-template-origin-name-
   title: My Addon
   description: My Addon
   annotations:
-    backstage.io/addon-of: template:default/my-template-origin-name
+    backstage.io/addon-of: template:default/my-template-origin
 spec:
   type: Service
   parameters:
     - title: Component
       required:
         - component_ref
-        - domain_name
+        - addon_prop
       properties:
         component_ref:
           title: Component
@@ -66,74 +66,57 @@ spec:
               - Component
             catalogFilter:
               - kind: ['Component']
-                'metadata.annotations.backstage.io/template-origin': 'template:default/my-template-origin-name'
+                'metadata.annotations.backstage.io/template-origin': 'template:default/my-template-origin'
 
-        domain_name:
-          title: Domain Name
+        addon_prop:
+          title: My addon property
           type: string
-          ui:field: ChicInput
-          description: |
-            <b>{{domain_name | title | replace(r/[ _,]+/, '')}}</b>.cs <br/>
-            Implementations/<b>{{domain_name  | title | replace(r/[ _,]+/, '')}}</b>Service.cs <br/>
-            I<b>{{domain_name | title | replace(r/[ _,]+/, '')}}</b>Service.cs <br/>
 
   steps:
-    - id: infos
-      name: Carregando informações
+    - id: component_ref_info
+      name: Load Component Info
       action: catalog:fetch
       input:
         entityRef: ${{ parameters.component_ref }}
 
-    # see 
-    # https://github.com/kode3tech/k3t-backstage-plugin-scaffolder-backend-module-plus/blob/HEAD/exemples.md#varsplus
-    - id: vars
-      name: Memo Vars
-      action: vars:plus
-      input:
-        domain_name: ${{ parameters.domain_name }}
-        pascal_name: ${{ parameters.domain_name | title | replace(r/[ _,]+/, '') }}
-        repoUrl: ${{ steps.infos.output.entity.metadata.annotations["backstage.io/repo-url"] }}
-        
-    - id: debug:template:fields
-      action: debug:log
-      name: Debug Template Fields
-      input: 
-        vars: ${{ steps.vars.output.result }}
-
     # see
     # https://github.com/kode3tech/k3t-backstage-plugin-scaffolder-backend-module-azure-devops/blob/main/exemples.md#gitcloneazure
     - id: source
-      name: 'Fetch Source'
+      name: 'Git Clone Component repo'
       action: git:clone:azure
       input:
         defaultBranch: main
-        repoUrl: ${{ steps.vars.output.result.repoUrl }}
+        repoUrl: ${{ steps.component_ref_info.output.entity.metadata.annotations["backstage.io/repo-url"] }}
 
     - id: fetch-template
-      name: Fetch Template
+      name: Apply Addon changes
       action: fetch:template
       input:
         url: ./skeleton
         targetPath: ./
         replace: true
-        values: ${{ steps.vars.output.result }}
+        values: 
+          component_ref: ${{ parameters.component_ref }}
+          component_ref_info: ${{ steps.component_ref_info.output.entity }}
+          addon_prop: ${{ parameters.addon_prop }}
 
     # see
     # https://github.com/kode3tech/k3t-backstage-plugin-scaffolder-backend-module-azure-devops/blob/main/exemples.md#gitcommitazure
     - id: commit
-      name: 'Commit and Push changes'
+      name: 'Commit and Push Addon changes'
       action: git:commit:azure
       input:
         createBranch: false
-        defaultBranch: "feat/domain-${{ steps['vars'].output.result.pascal_name }}"
-        commitMessage: "feat: add domain ${{ steps['vars'].output.result.pascal_name }}"
+        defaultBranch: "feat/my-addon-upgrades"
+        commitMessage: "feat: improves with my-addon"
         gitAuthorName: 'Backstage'
 
 
   output:
     links:
       - title: Repository
-        url: ${{ steps.vars.output.result.repoUrl }}
+        url: 
+          ${{ steps.component_ref_info.output.entity.metadata.annotations["backstage.io/repo-url"] }}
 
       - title: Open in catalog
         icon: catalog
