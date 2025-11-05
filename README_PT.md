@@ -78,9 +78,9 @@ This plugin uses an **intelligent two-level template binding system**:
    k3t.io/scaffolder-origin: template:default/microservice-template
    ```
 
-2. **Addon Templates** (Scaffolder Templates): Templates marked with `k3t/supported-by` that reference the origin
+2. **Addon Templates** (Scaffolder Templates): Templates marked with `k3t.io/supported-by` that reference the origin
    ```yaml
-   k3t/supported-by: template:default/microservice-template
+   k3t.io/supported-by: template:default/microservice-template
    ```
 
 3. **Addon Discovery** (Smart Query): When viewing the "Addons" tab, the plugin queries the catalog for matching templates
@@ -132,7 +132,7 @@ spec:
 
 ### Step 3: Create Addon Templates
 
-Create scaffolder templates with the `k3t/supported-by` annotation:
+Create scaffolder templates with the `k3t.io/supported-by` annotation:
 
 ```yaml
 apiVersion: scaffolder.backstage.io/v1beta3
@@ -142,7 +142,7 @@ metadata:
   title: 📊 Add Monitoring & Observability
   description: Integrate Prometheus, Grafana and intelligent alerts
   annotations:
-    k3t/supported-by: template:default/microservice-template
+    k3t.io/supported-by: template:default/microservice-template
   tags:
     - monitoring
     - observability
@@ -249,7 +249,7 @@ spec:
   owner: my-team
 ```
 
-#### Template Annotation: `k3t/supported-by`
+#### Template Annotation: `k3t.io/supported-by`
 Applied to addon templates to indicate which component template they extend:
 
 ```yaml
@@ -260,7 +260,7 @@ metadata:
   title: Add Monitoring
   description: Add monitoring and observability to microservices
   annotations:
-    k3t/supported-by: template:default/microservice-template
+    k3t.io/supported-by: template:default/microservice-template
 spec:
   type: Service
   parameters:
@@ -366,19 +366,19 @@ Create different addon templates for different aspects:
 ```yaml
 # Addon for adding CI/CD
 annotations:
-  k3t/supported-by: template:default/backend-service
+  k3t.io/supported-by: template:default/backend-service
   backstage.io/addon-category: infrastructure
 
 ---
 # Addon for adding security scanning
 annotations:
-  k3t/supported-by: template:default/backend-service
+  k3t.io/supported-by: template:default/backend-service
   backstage.io/addon-category: security
 
 ---
 # Addon for documentation setup
 annotations:
-  k3t/supported-by: template:default/backend-service
+  k3t.io/supported-by: template:default/backend-service
   backstage.io/addon-category: documentation
 ```
 
@@ -408,7 +408,7 @@ steps:
 
 ### Addons Not Showing
 
-1. **Verify the annotation format**: Ensure `k3t.io/scaffolder-origin` in your component exactly matches `k3t/supported-by` in your addon template
+1. **Verify the annotation format**: Ensure `k3t.io/scaffolder-origin` in your component exactly matches `k3t.io/supported-by` in your addon template
 2. **Check catalog sync**: Run `backstage-cli catalog:refresh` to ensure templates are indexed
 3. **Validate YAML**: Use a YAML validator to ensure proper formatting
 
@@ -433,3 +433,5 @@ Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for de
 ## License
 
 This plugin is licensed under the [Apache-2.0 License](LICENSE).
+
+```
