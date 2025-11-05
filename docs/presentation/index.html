@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entity Addons Plugin - Apresentação</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <style>
+/* ========================================
+   TEMA VERDE E NEON - ENTITY ADDONS PLUGIN
+   ======================================== */
+
+/* Reset e Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #001a00 0%, #000d00 50%, #000000 100%);
+    color: #d0ffe0;
+    overflow: hidden;
+}
+
+/* Fallback Message */
+.fallback-message {
+    font-family: sans-serif;
+    line-height: 1.3;
+    width: 780px;
+    padding: 10px 10px 0;
+    margin: 20px auto;
+    border: 1px solid #E4C652;
+    border-radius: 10px;
+    background: #EEDC94;
+}
+
+/* Hint */
+.hint {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(43, 226, 43, 0.25);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    padding: 15px 30px;
+    border-radius: 50px;
+    border: 1px solid rgba(78, 221, 78, 0.4);
+    box-shadow: 0 8px 32px 0 rgba(78, 221, 78, 0.5);
+    color: #aaffb0;
+    font-size: 14px;
+    z-index: 10000;
+}
+
+.hint strong {
+    color: #7dff7d;
+    text-shadow: 0 0 10px #7dff7d;
+}
+
+/* Slides Container */
+.step {
+    width: 1000px;
+    height: 700px;
+    padding: 40px 60px;
+    background: rgba(0, 20, 0, 0.95);
+    backdrop-filter: blur(200px) saturate(150%);
+    -webkit-backdrop-filter: blur(200px) saturate(150%);
+    border: 3px solid rgba(125, 255, 125, 0.6);
+    border-radius: 20px;
+    box-shadow: 
+        0 8px 32px 0 rgba(78, 221, 78, 0.5),
+        inset 0 0 80px rgba(78, 221, 78, 0.2),
+        0 0 30px rgba(125, 255, 125, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    line-height: 1.6;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.step.active {
+    z-index: 100;
+    background: rgba(255, 255, 255, 0);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(13.9px);
+    -webkit-backdrop-filter: blur(13.9px);
+    filter: blur(0px);
+}
+
+.step.past {
+    z-index: 0;
+    opacity: 0.2;
+    pointer-events: none;
+    background: rgba(20, 0, 40, 0.98);
+    filter: blur(10px);
+}
+
+.step.future {
+    z-index: 0;
+    opacity: 0.2;
+    pointer-events: none;
+    background: rgba(20, 0, 40, 0.98);
+    filter: blur(10px);
+}
+
+/* Slide de Encerramento com blur extra forte */
+#encerramento.step.active {
+    backdrop-filter: blur(100px) saturate(180%) contrast(1.1);
+    -webkit-backdrop-filter: blur(100px) saturate(180%) contrast(1.1);
+    background: rgba(0, 20, 0, 0.9);
+}
+
+/* Slide Content */
+.slide-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.slide-content.center {
+    align-items: center;
+    text-align: center;
+}
+
+/* Typography */
+h1.neon-title {
+    font-size: 72px;
+    font-weight: 900;
+    text-align: center;
+    color: #06ffa5 !important;
+    text-shadow: 0 0 72px #06ffa5;
+    margin-bottom: 30px;
+    animation: neonPulse 2s ease-in-out infinite;
+}
+
+h1.neon-title.massive {
+    font-size: 120px;
+}
+
+@keyframes neonPulse {
+    0%, 100% {
+        text-shadow: 
+            0 0 10px #7dff7d,
+            0 0 20px #7dff7d,
+            0 0 30px #7dff7d,
+            0 0 40px #4edd4e,
+            0 0 70px #4edd4e,
+            0 0 80px #4edd4e,
+            0 0 100px #4edd4e;
+    }
+    50% {
+        text-shadow: 
+            0 0 5px #7dff7d,
+            0 0 10px #7dff7d,
+            0 0 15px #7dff7d,
+            0 0 20px #4edd4e,
+            0 0 35px #4edd4e,
+            0 0 40px #4edd4e,
+            0 0 50px #4edd4e;
+    }
+}
+
+h2.section-title {
+    font-size: 48px;
+    color: #7dff7d;
+    text-shadow: 0 0 20px #7dff7d, 0 0 40px #4edd4e;
+    margin-bottom: 30px;
+}
+
+h2.subtitle {
+    font-size: 36px;
+    color: #aaffb0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 28px;
+    color: #aaffb0;
+    margin-bottom: 15px;
+}
+
+p {
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Font Awesome Icons */
+.fas, .fab {
+    margin-right: 10px;
+}
+
+h1 .fas, h2 .fas, h3 .fas, h3 .fab {
+    margin-right: 15px;
+}
+
+.feature-list li .fas {
+    margin-right: 12px;
+    color: #7dff7d;
+}
+
+/* Icon Colors */
+.icon-yellow {
+    color: #ffd60a !important;
+    text-shadow: 0 0 10px #ffd60a;
+}
+
+.icon-red {
+    color: #ff006e !important;
+    text-shadow: 0 0 10px #ff006e;
+}
+
+.icon-green {
+    color: #06ffa5 !important;
+    text-shadow: 0 0 10px #06ffa5;
+}
+
+.icon-white {
+    color: #ffffff !important;
+    text-shadow: 0 0 10px #ffffff;
+}
+
+.icon-purple {
+    color: #c77dff !important;
+    text-shadow: 0 0 10px #c77dff;
+}
+
+/* Badges */
+.tech-stack {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.badge {
+    background: linear-gradient(135deg, #4edd4e, #2c7b2c);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 0 20px rgba(78, 221, 78, 0.6);
+    border: 2px solid #7dff7d;
+}
+
+.badge-small {
+    background: rgba(78, 221, 78, 0.3);
+    color: #aaffb0;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    border: 1px solid #4edd4e;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* Lists */
+.feature-list {
+    list-style: none;
+    font-size: 22px;
+    line-height: 1.8;
+}
+
+.feature-list li {
+    margin: 12px 0;
+    padding-left: 10px;
+}
+
+/* Cards */
+.card, .branchingStrategy-card, .method-card, .file-card, .var-card, .benefit-card {
+    background: rgba(78, 221, 78, 0.12);
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    border: 1px solid rgba(78, 221, 78, 0.3);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 8px 32px 0 rgba(78, 221, 78, 0.25);
+    transition: all 0.3s ease;
+}
+
+.card:hover, .branchingStrategy-card:hover, .method-card:hover, .file-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 48px 0 rgba(78, 221, 78, 0.45);
+    border-color: rgba(125, 255, 125, 0.5);
+    background: rgba(78, 221, 78, 0.18);
+}
+
+.solution-box, .features-box {
+    background: rgba(78, 221, 78, 0.15);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    border: 1px solid rgba(78, 221, 78, 0.35);
+    border-radius: 15px;
+    padding: 30px;
+    margin: 20px 0;
+    box-shadow: 0 8px 32px 0 rgba(78, 221, 78, 0.3);
+}
+
+/* Grids */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Strategy Cards */
+.branchingStrategy-card {
+    text-align: center;
+    padding: 30px;
+}
+
+.branchingStrategy-card.vivoflow {
+    border-color: rgba(114, 9, 183, 0.4);
+    background: rgba(114, 9, 183, 0.15);
+    backdrop-filter: blur(12px) saturate(170%);
+    -webkit-backdrop-filter: blur(12px) saturate(170%);
+}
+
+.branchingStrategy-card.releaseflow {
+    border-color: rgba(157, 78, 221, 0.4);
+    background: rgba(157, 78, 221, 0.15);
+    backdrop-filter: blur(12px) saturate(170%);
+    -webkit-backdrop-filter: blur(12px) saturate(170%);
+}
+
+.branchingStrategy-card.stb {
+    border-color: rgba(199, 125, 255, 0.4);
+    background: rgba(199, 125, 255, 0.15);
+    backdrop-filter: blur(12px) saturate(170%);
+    -webkit-backdrop-filter: blur(12px) saturate(170%);
+}
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(78, 221, 78, 0.15);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 10px;
+    margin-top: 15px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4edd4e, #7dff7d);
+    box-shadow: 0 0 10px #7dff7d;
+    animation: progressGlow 2s ease-in-out infinite;
+}
+
+@keyframes progressGlow {
+    0%, 100% { box-shadow: 0 0 10px #7dff7d; }
+    50% { box-shadow: 0 0 20px #7dff7d, 0 0 30px #4edd4e; }
+}
+
+/* Flow Diagram */
+.flow-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.flow-diagram.simple {
+    gap: 0;
+}
+
+.flow-step {
+    background: linear-gradient(135deg, #2c7b2c, #4edd4e);
+    color: #fff;
+    padding: 20px 30px;
+    border-radius: 12px;
+    border: 2px solid #7dff7d;
+    box-shadow: 0 0 20px rgba(78, 221, 78, 0.5);
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+}
+
+.flow-arrow {
+    color: #aaffb0;
+    font-size: 32px;
+    font-weight: bold;
+    text-shadow: 0 0 10px #7dff7d;
+}
+
+/* Tags Section */
+.tags-section {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(78, 221, 78, 0.08);
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    border-radius: 10px;
+    border: 1px solid rgba(78, 221, 78, 0.25);
+    box-shadow: 0 4px 16px 0 rgba(78, 221, 78, 0.2);
+}
+
+.tags-list {
+    list-style: none;
+    font-size: 18px;
+}
+
+.tags-list li {
+    margin: 10px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.tags-list li::before {
+    content: '\f02b';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+}
+
+/* Variables Cards */
+.var-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+}
+
+.var-name {
+    font-size: 16px;
+    color: #7dff7d;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.var-value {
+    font-size: 24px;
+    color: #aaffb0;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 10px #4edd4e;
+}
+
+/* Code Blocks */
+.code-block {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px) saturate(140%);
+    -webkit-backdrop-filter: blur(8px) saturate(140%);
+    border: 1px solid rgba(78, 221, 78, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    color: #aaffb0;
+    overflow-x: auto;
+    box-shadow: 
+        0 8px 32px 0 rgba(0, 0, 0, 0.4),
+        inset 0 0 20px rgba(78, 221, 78, 0.15);
+    margin-top: 15px;
+}
+
+.code-block.mini {
+    font-size: 14px;
+    padding: 15px;
+}
+
+.code-block code,
+.code-block pre {
+    background: transparent !important;
+    margin: 0;
+    padding: 0;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.code-block pre[class*="language-"] {
+    background: transparent !important;
+    margin: 0;
+    padding: 0;
+}
+
+/* Prism syntax highlighting customization */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: #7c7c7c;
+}
+
+.token.punctuation {
+    color: #7dff7d;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #06ffa5;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #ffd60a;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+    color: #ff006e;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+    color: #7dff7d;
+}
+
+.token.function,
+.token.class-name {
+    color: #aaffb0;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+    color: #06ffa5;
+}
+
+code {
+    background: rgba(78, 221, 78, 0.15);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-family: 'Courier New', monospace;
+    color: #aaffb0;
+    /* border: 1px solid rgba(78, 221, 78, 0.3); */
+}
+
+.code-example {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.code-example code {
+    display: block;
+    margin: 8px 0;
+}
+
+/* Commit List & Bumps */
+.commit-list {
+    list-style: none;
+    font-size: 18px;
+    margin: 15px 0;
+}
+
+.commit-list li {
+    margin: 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bump {
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.bump.major {
+    background: linear-gradient(135deg, #d00000, #ff006e);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 0, 110, 0.6);
+}
+
+.bump.minor {
+    background: linear-gradient(135deg, #2c7b2c, #4edd4e);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(78, 221, 78, 0.6);
+}
+
+.bump.patch {
+    background: linear-gradient(135deg, #000d00, #2c7b2c);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(44, 123, 44, 0.6);
+}
+
+/* Setup Steps */
+.setup-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.setup-step {
+    background: rgba(78, 221, 78, 0.12);
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    border: 1px solid rgba(78, 221, 78, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    padding-left: 80px;
+    box-shadow: 0 8px 32px 0 rgba(78, 221, 78, 0.2);
+}
+
+.step-number {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #2c7b2c, #4edd4e);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(78, 221, 78, 0.6);
+}
+
+/* Notes */
+.note, .note-box {
+    background: rgba(78, 221, 78, 0.08);
+    backdrop-filter: blur(8px) saturate(140%);
+    -webkit-backdrop-filter: blur(8px) saturate(140%);
+    border-left: 3px solid rgba(78, 221, 78, 0.6);
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #aaffb0;
+    box-shadow: 0 4px 16px 0 rgba(78, 221, 78, 0.15);
+}
+
+.presenter-note {
+    text-align: center;
+    color: #7dff7d;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+/* ROI Box */
+.roi-box {
+    background: linear-gradient(135deg, rgba(78, 221, 78, 0.25), rgba(44, 123, 44, 0.25));
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    border: 1px solid rgba(125, 255, 125, 0.4);
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: 30px;
+    text-align: center;
+    box-shadow: 0 8px 32px 0 rgba(78, 221, 78, 0.35);
+}
+
+.roi-box h3 {
+    color: #aaffb0;
+    margin-bottom: 15px;
+}
+
+.roi-box p {
+    font-size: 24px;
+    color: #7dff7d;
+    text-shadow: 0 0 10px #4edd4e;
+}
+
+/* Next Steps */
+.steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.next-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: rgba(78, 221, 78, 0.12);
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    border: 1px solid rgba(78, 221, 78, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 32px 0 rgba(78, 221, 78, 0.25);
+}
+
+.step-icon {
+    font-size: 36px;
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2c7b2c, #4edd4e);
+    border-radius: 50%;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(78, 221, 78, 0.6);
+}
+
+.step-icon i {
+    margin: 0;
+}
+
+/* Q&A */
+.qa-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.qa-item {
+    background: rgba(78, 221, 78, 0.12);
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    border-left: 3px solid rgba(125, 255, 125, 0.6);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px 0 rgba(78, 221, 78, 0.2);
+}
+
+.qa-item h3 {
+    color: #7dff7d;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.qa-item p {
+    color: #aaffb0;
+    font-size: 18px;
+}
+
+/* Contact & Final */
+.contact-info {
+    margin: 30px 0;
+    font-size: 20px;
+}
+
+.contact-info p {
+    margin: 10px 0;
+    color: #aaffb0;
+}
+
+.final-cta {
+    margin-top: 40px;
+    padding: 30px;
+    background: rgba(78, 221, 78, 0.18);
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    border: 1px solid rgba(125, 255, 125, 0.4);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(78, 221, 78, 0.4);
+}
+
+.final-cta h3 {
+    color: #aaffb0;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.final-cta p {
+    color: #7dff7d;
+    font-size: 20px;
+}
+
+/* Comparison Table */
+.comparison-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 30px 0;
+    background: rgba(43, 226, 43, 0.08);
+    backdrop-filter: blur(10px) saturate(140%);
+    -webkit-backdrop-filter: blur(10px) saturate(140%);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px 0 rgba(78, 221, 78, 0.3);
+}
+
+.comparison-table thead {
+    background: rgba(78, 221, 78, 0.3);
+}
+
+.comparison-table th {
+    padding: 20px 15px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid rgba(78, 221, 78, 0.5);
+}
+
+.comparison-table th:first-child {
+    text-align: left;
+    width: 30%;
+}
+
+.comparison-table tbody tr {
+    transition: background 0.3s ease;
+}
+
+.comparison-table tbody tr:hover {
+    background: rgba(78, 221, 78, 0.15);
+}
+
+.comparison-table td {
+    padding: 18px 15px;
+    text-align: center;
+    font-size: 16px;
+    color: #ffffff;
+    border-bottom: 1px solid rgba(78, 221, 78, 0.2);
+}
+
+.comparison-table td:first-child {
+    text-align: left;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.comparison-table td strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.comparison-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.step.active .slide-content > * {
+    animation: slideIn 0.6s ease-out;
+}
+
+/* Abstract Background Shapes */
+.abstract-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+    opacity: 0.15;
+}
+
+.shape {
+    position: absolute;
+    filter: blur(80px);
+}
+
+.shape-circle {
+    border-radius: 50%;
+}
+
+.shape-blob {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+}
+
+.shape-triangle {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.shape-square {
+    transform: rotate(45deg);
+}
+
+.shape-hexagon {
+    clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
+}
+
+/* Shape Colors */
+.shape-purple {
+    background: radial-gradient(circle, #7dff7d 0%, #4edd4e 100%);
+}
+
+.shape-blue {
+    background: radial-gradient(circle, #06ffa5 0%, #0096c7 100%);
+}
+
+.shape-pink {
+    background: radial-gradient(circle, #ff006e 0%, #d90429 100%);
+}
+
+.shape-yellow {
+    background: radial-gradient(circle, #ffd60a 0%, #ffba08 100%);
+}
+
+.shape-green {
+    background: radial-gradient(circle, #06ffa5 0%, #06d6a0 100%);
+}
+
+/* Shape Animations */
+@keyframes float1 {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    33% {
+        transform: translate(30px, -40px) rotate(120deg) scale(1.1);
+    }
+    66% {
+        transform: translate(-20px, 30px) rotate(240deg) scale(0.9);
+    }
+}
+
+@keyframes float2 {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    50% {
+        transform: translate(-50px, 50px) rotate(180deg) scale(1.2);
+    }
+}
+
+@keyframes float3 {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(40px, 20px) rotate(90deg);
+    }
+    50% {
+        transform: translate(20px, -30px) rotate(180deg);
+    }
+    75% {
+        transform: translate(-30px, 40px) rotate(270deg);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.15;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 0.25;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.shape.anim-float1 {
+    animation: float1 20s ease-in-out infinite;
+}
+
+.shape.anim-float2 {
+    animation: float2 15s ease-in-out infinite;
+}
+
+.shape.anim-float3 {
+    animation: float3 25s ease-in-out infinite;
+}
+
+.shape.anim-pulse {
+    animation: pulse 10s ease-in-out infinite;
+}
+
+.shape.anim-rotate {
+    animation: rotate 30s linear infinite;
+}
+
+/* Constellation Background (Alternative Style) */
+.constellation-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.constellation-bg canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.dot {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #7dff7d;
+    box-shadow: 0 0 10px #7dff7d;
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+.line {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(125, 255, 125, 0.3), transparent);
+    transform-origin: left center;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes lineFade {
+    0%, 100% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Gradient Waves Background (Another Alternative) */
+.waves-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+    opacity: 0.1;
+}
+
+.wave {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    border-radius: 40%;
+}
+
+.wave-1 {
+    background: radial-gradient(ellipse at center, #7dff7d 0%, transparent 70%);
+    animation: waveFloat1 20s ease-in-out infinite;
+    top: -50%;
+    left: -50%;
+}
+
+.wave-2 {
+    background: radial-gradient(ellipse at center, #06ffa5 0%, transparent 70%);
+    animation: waveFloat2 25s ease-in-out infinite;
+    bottom: -50%;
+    right: -50%;
+}
+
+.wave-3 {
+    background: radial-gradient(ellipse at center, #ffd60a 0%, transparent 70%);
+    animation: waveFloat3 30s ease-in-out infinite;
+    top: 20%;
+    right: -50%;
+}
+
+@keyframes waveFloat1 {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate(50px, 50px) rotate(180deg);
+    }
+}
+
+@keyframes waveFloat2 {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate(-60px, -40px) rotate(-180deg);
+    }
+}
+
+@keyframes waveFloat3 {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate(-40px, 60px) rotate(180deg);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .step {
+        width: 800px;
+        height: 600px;
+        padding: 30px 40px;
+        font-size: 16px;
+    }
+    
+    h1.neon-title {
+        font-size: 56px;
+    }
+    
+    h2.section-title {
+        font-size: 36px;
+    }
+}
+
+/* Overview slide (transparent) */
+#overview {
+    visibility: hidden;
+}
+    </style>
+</head>
+<body class="impress-not-supported">
+
+<div id="impress" data-transition-duration="1000">
+
+    <!-- ========================================
+    SEÇÃO 1: RESUMO GERAL
+    ======================================== -->
+
+    <!-- SLIDE 1: TÍTULO (FRENTE - CENTRO) -->
+    <div id="title" class="step slide" data-x="0" data-y="0" data-z="0" data-scale="4" data-rotate="0">
+        <div class="slide-content">
+            <h1 class="neon-title"><i class="fas fa-puzzle-piece icon-yellow"></i> Entity Addons Plugin</h1>
+            <h2 class="subtitle">Marketplace de Addons Inteligente para Backstage</h2>
+            <div class="tech-stack">
+                <span class="badge">Backstage</span>
+                <span class="badge">Template-based</span>
+                <span class="badge">Plugin Frontend</span>
+            </div>
+            <p class="presenter-note">K3T Backstage Plugin Frontend Addons</p>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: O PROBLEMA (FRENTE - ESQUERDA) -->
+    <div id="intro-problema" class="step slide" data-x="-1200" data-y="0" data-z="2000" data-scale="1" data-rotate="0">
+        <div class="slide-content">
+            <h2 class="section-title"><i class="fas fa-exclamation-triangle icon-red"></i> O Problema</h2>
+            <ul class="feature-list">
+                <li><i class="fas fa-times-circle icon-red"></i> Descoberta de addons é manual e tediosa</li>
+                <li><i class="fas fa-times-circle icon-red"></i> Falta de integração visual no Backstage</li>
+                <li><i class="fas fa-times-circle icon-red"></i> Dificuldade em escalar e gerenciar templates</li>
+                <li><i class="fas fa-times-circle icon-red"></i> Necessidade de pré-popular dados de componentes</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: A SOLUÇÃO (FRENTE - DIREITA) -->
+    <div id="intro-solucao" class="step slide" data-x="1200" data-y="0" data-z="2000" data-scale="1" data-rotate="0">
+        <div class="slide-content">
+            <h2 class="section-title"><i class="fas fa-check-circle icon-green"></i> A Solução</h2>
+            <div class="solution-box">
+                <h3>Entity Addons Plugin</h3>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check icon-green"></i> Descoberta inteligente de addons</li>
+                    <li><i class="fas fa-check icon-green"></i> Integração visual com Backstage</li>
+                    <li><i class="fas fa-check icon-green"></i> Template-based marketplace</li>
+                    <li><i class="fas fa-check icon-green"></i> Pré-população automática de dados</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: FUNCIONALIDADES (TOPO - ESQUERDA) -->
+    <div id="funcionalidades" class="step slide" data-x="-1200" data-y="-1200" data-z="2000" data-scale="1" data-rotate="0">
+        <div class="slide-content">
+            <h1 class="neon-title"><i class="fas fa-cogs icon-white"></i> Características</h1>
+            <div class="grid-3">
+                <div class="card">
+                    <h3><i class="fas fa-plug icon-green"></i> Template-based</h3>
+                    <p>Crie templates reutilizáveis</p>
+                    <span class="badge-small">Escalável</span>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-filter icon-yellow"></i> Smart Filtering</h3>
+                    <p>Descubra addons relevantes</p>
+                    <span class="badge-small">Inteligente</span>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-rocket icon-purple"></i> One-Click</h3>
+                    <p>Integração automatizada</p>
+                    <span class="badge-small">Fácil</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: ARQUITETURA (TOPO - CENTRO) -->
+    <div id="arquitetura" class="step slide" data-x="0" data-y="-1200" data-z="2000" data-scale="1" data-rotate="0">
+        <div class="slide-content">
+            <h2 class="section-title"><i class="fas fa-sitemap icon-white"></i> Arquitetura & Ligação de Templates</h2>
+            <div class="grid-2">
+                <div class="method-card">
+                    <h3><i class="fas fa-tag icon-purple"></i> Anotação de Componente</h3>
+                    <pre class="code-block"><code class="language-yaml">k3t.io/scaffolder-origin:
+  template:default/microservice-template</code></pre>
+                    <p class="note">Define qual template criou o componente</p>
+                </div>
+                <div class="method-card">
+                    <h3><i class="fas fa-link icon-yellow"></i> Anotação de Addon</h3>
+                    <pre class="code-block"><code class="language-yaml">k3t/supported-by:
+  template:default/microservice-template</code></pre>
+                    <p class="note">Indica qual template este addon estende</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 6: FLUXO (TOPO - DIREITA) -->
+    <div id="fluxo" class="step slide" data-x="1200" data-y="-1200" data-z="2000" data-scale="1" data-rotate="0">
+        <div class="slide-content">
+            <h2 class="section-title"><i class="fas fa-arrow-right-long icon-yellow"></i> Fluxo de Funcionamento</h2>
+            <div class="setup-steps">
+                <div class="setup-step">
+                    <span class="step-number">1</span>
+                    <h3>Visualizar Componente</h3>
+                    <p>Acesse a aba "Addons" na página do componente</p>
+                </div>
+                <div class="setup-step">
+                    <span class="step-number">2</span>
+                    <h3>Detecção Automática</h3>
+                    <p>Plugin lê annotation <code>template-origin</code></p>
+                </div>
+                <div class="setup-step">
+                    <span class="step-number">3</span>
+                    <h3>Consulta o Catálogo</h3>
+                    <p>Busca templates com <code>addon-of</code> correspondente</p>
+                </div>
+                <div class="setup-step">
+                    <span class="step-number">4</span>
+                    <h3>Exibir Grid de Addons</h3>
+                    <p>Mostra cartões dos addons disponíveis</p>
+                </div>
+                <div class="setup-step">
+                    <span class="step-number">5</span>
+                    <h3>Clicar no Addon</h3>
+                    <p>Scaffolder pré-populado com <code>component_ref</code></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+       SEÇÃO 2: INSTALAÇÃO E SETUP
+       ======================================== -->
+
+    <!-- SLIDE 7: INSTALAÇÃO (FUNDO - ESQUERDA) -->
+    <div id="instalacao" class="step slide" data-x="-1200" data-y="1200" data-z="2000" data-scale="1" data-rotate="0">
+        <div class="slide-content">
+            <h1 class="neon-title"><i class="fas fa-download icon-yellow"></i> Instalação</h1>
+            <div class="setup-steps">
+                <div class="setup-step">
+                    <span class="step-number">1</span>
+                    <h3>Instalar via Yarn/NPM</h3>
+                    <pre class="code-block mini"><code class="language-bash">yarn add @k3tech/backstage-plugin-frontend-addons</code></pre>
+                </div>
+                <div class="setup-step">
+                    <span class="step-number">2</span>
+                    <h3>Integrar ao EntityPage</h3>
+                    <p>Arquivo: <code>packages/app/src/components/catalog/EntityPage.tsx</code></p>
+                </div>
+                <div class="setup-step">
+                    <span class="step-number">3</span>
+                    <h3>Adicionar Rota</h3>
+                    <p>Criar rota "/addons" com <code>EntityAddonsContent</code></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+       SEÇÃO 3: APROFUNDAMENTO - VIVOFLOW
+       ======================================== -->
+
+    <!-- SLIDE 8: CÓDIGO (FUNDO - CENTRO) -->
+    <div id="instalacao-codigo" class="step slide" data-x="0" data-y="1200" data-z="2000" data-scale="1" data-rotate="0">
+      <div class="slide-content">
+        <h2 class="section-title"><i class="fas fa-code icon-green"></i> Código: EntityPage.tsx</h2>
+        <pre class="code-block"><code class="language-tsx">import { EntityAddonsContent } from '@k3tech/backstage-plugin-frontend-addons';
+
+const defaultEntityPage = (
+  &lt;EntityLayout&gt;
+    {/* ... outras rotas ... */}
+    &lt;EntityLayout.Route path="/addons" title="Addons"&gt;
+      &lt;EntityAddonsContent variant="gridItem" /&gt;
+    &lt;/EntityLayout.Route&gt;
+  &lt;/EntityLayout&gt;
+);</code></pre>
+      </div>
+    </div>
+
+    <!-- ========================================
+         SEÇÃO 3: ANOTAÇÕES E CONFIGURAÇÃO
+         ======================================== -->
+
+    <!-- SLIDE 9: ANOTAÇÕES (FUNDO - DIREITA) -->
+    <div id="anotacoes" class="step slide" data-x="1200" data-y="1200" data-z="2000" data-scale="1" data-rotate="0">
+        <div class="slide-content">
+            <h2 class="section-title"><i class="fas fa-bookmark icon-yellow"></i> Anotações de Ligação</h2>
+            <div class="setup-steps">
+                <div class="setup-step">
+                    <span class="step-number">1</span>
+                    <h3>Component: template-origin</h3>
+                    <pre class="code-block mini"><code class="language-yaml">kind: Component
+metadata:
+  name: my-service
+  annotations:
+    k3t.io/scaffolder-origin: \
+      template:default/microservice-template</code></pre>
+                </div>
+                <div class="setup-step">
+                    <span class="step-number">2</span>
+                    <h3>Template: addon-of</h3>
+                    <pre class="code-block mini"><code class="language-yaml">kind: Template
+metadata:
+  name: add-monitoring
+  annotations:
+    k3t/supported-by: \
+      template:default/microservice-template</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>    <!-- SLIDE 10: COMPONENTES (ESQUERDA - TOPO) -->
+    <div id="componentes" class="step slide" data-x="-1200" data-y="-1200" data-z="4000" data-scale="1" data-rotate="0">
+        <div class="slide-content">
+            <h2 class="section-title"><i class="fas fa-cube icon-purple"></i> Componentes Exportados</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>EntityAddonsContent</h3>
+                    <p>Componente principal para exibir addons</p>
+                    <div class="code-example">
+                        <code>Props: variant</code>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>TemplateCard</h3>
+                    <p>Cartão individual de template</p>
+                    <div class="code-example">
+                        <code>Props: template</code>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>entityAddonsPlugin</h3>
+                    <p>Plugin factory function</p>
+                    <div class="code-example">
+                        <code>App integration</code>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>CardHeader</h3>
+                    <p>Header do template card</p>
+                    <div class="code-example">
+                        <code>Sub-component</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+         SEÇÃO 4: EXEMPLO PRÁTICO
+         ======================================== -->
+
+    <!-- SLIDE 11: EXEMPLO ADDON (ESQUERDA - CENTRO) -->
+    <div id="exemplo-addon" class="step slide" data-x="-1200" data-y="0" data-z="4000" data-scale="1" data-rotate="0">
+        <div class="slide-content">
+            <h2 class="section-title"><i class="fas fa-lightbulb icon-yellow"></i> Exemplo: Template de Addon</h2>
+            <pre class="code-block mini"><code class="language-yaml">apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: add-monitoring
+  title: 📊 Add Monitoring
+  annotations:
+    k3t/supported-by: \
+      template:default/microservice-template
+spec:
+  parameters:
+    - title: Target Component
+      properties:
+        component_ref:
+          title: Select Component
+          type: string
+          ui:field: EntityPicker
+  steps:
+    - id: fetch_component
+      action: catalog:fetch
+      input:
+        entityRef: ${{ parameters.component_ref }}
+    
+    - id: apply_monitoring
+      action: fetch:template
+      input:
+        url: ./templates/monitoring</code></pre>
+        </div>
+    </div>
+
+    <!-- SLIDE 12: BOAS PRÁTICAS (ESQUERDA - FUNDO) -->
+    <div id="boas-praticas" class="step slide" data-x="-1200" data-y="1200" data-z="4000" data-scale="1" data-rotate="0">
+        <div class="slide-content">
+            <h2 class="section-title"><i class="fas fa-thumbs-up icon-green"></i> Boas Práticas</h2>
+            <div class="setup-steps">
+                <div class="setup-step">
+                    <span class="step-number">1</span>
+                    <h3>Nomenclatura Consistente</h3>
+                    <p>Use padrão <code>add-feature-name</code> para templates</p>
+                </div>
+                <div class="setup-step">
+                    <span class="step-number">2</span>
+                    <h3>Descrições Claras</h3>
+                    <p>Explique o que cada addon faz</p>
+                </div>
+                <div class="setup-step">
+                    <span class="step-number">3</span>
+                    <h3>Testes Antes de Produção</h3>
+                    <p>Valide com componentes exemplo</p>
+                </div>
+                <div class="setup-step">
+                    <span class="step-number">4</span>
+                    <h3>Metadados Completos</h3>
+                    <p>Inclua tags, owner e lifecycle</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 13: TROUBLESHOOTING (DIREITA - TOPO) -->
+    <div id="troubleshooting" class="step slide" data-x="1200" data-y="-1200" data-z="4000" data-scale="1" data-rotate="0">
+        <div class="slide-content">
+            <h2 class="section-title"><i class="fas fa-wrench icon-red"></i> Troubleshooting</h2>
+            <div class="qa-list">
+                <div class="qa-item">
+                    <h3><i class="fas fa-circle-question icon-yellow"></i> Addons não aparecem?</h3>
+                    <p>✓ Verifique se as anotações coincidem exatamente<br>✓ Execute refresh do catálogo<br>✓ Valide YAML do template</p>
+                </div>
+                <div class="qa-item">
+                    <h3><i class="fas fa-circle-question icon-yellow"></i> Pré-população não funciona?</h3>
+                    <p>✓ Componente deve estar acessível no catálogo<br>✓ Verifique filtros do EntityPicker<br>✓ Valide codificação de URL</p>
+                </div>
+                <div class="qa-item">
+                    <h3><i class="fas fa-circle-question icon-yellow"></i> Erro ao renderizar cartão?</h3>
+                    <p>✓ Inspect no navegador (F12)<br>✓ Verifique console de erros<br>✓ Valide props do TemplateCard</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+         SEÇÃO 5: ENCERRAMENTO
+         ======================================== -->
+
+    <!-- SLIDE 14: BENEFÍCIOS (DIREITA - CENTRO) -->
+    <div id="beneficios" class="step slide" data-x="1200" data-y="0" data-z="4000" data-scale="1" data-rotate="0">
+        <div class="slide-content">
+            <h1 class="neon-title">💎 Benefícios</h1>
+            <div class="grid-2">
+                <div class="benefit-card">
+                    <h3><i class="fas fa-wrench icon-red"></i> Técnicos</h3>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check icon-green"></i> Descoberta automática</li>
+                        <li><i class="fas fa-check icon-green"></i> Integração sem código</li>
+                        <li><i class="fas fa-check icon-green"></i> Reutilização de templates</li>
+                        <li><i class="fas fa-check icon-green"></i> Zero dependências</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <h3><i class="fas fa-chart-line icon-yellow"></i> Organizacionais</h3>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-chart-line icon-green"></i> DX aprimorada</li>
+                        <li><i class="fas fa-bullseye icon-green"></i> Escalabilidade</li>
+                        <li><i class="fas fa-chart-bar icon-green"></i> Padronização</li>
+                        <li><i class="fas fa-piggy-bank icon-green"></i> Eficiência operacional</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="roi-box">
+                <h3><i class="fas fa-rocket icon-yellow"></i> Resultado</h3>
+                <p><strong>Marketplace de Addons</strong> integrado no Backstage</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 15: PRÓXIMOS PASSOS (DIREITA - FUNDO) -->
+    <div id="proximos-passos" class="step slide" data-x="1200" data-y="1200" data-z="4000" data-scale="1" data-rotate="0">
+        <div class="slide-content">
+            <h2 class="section-title"><i class="fas fa-rocket icon-white"></i> Próximos Passos</h2>
+            <div class="steps-list">
+                <div class="next-step">
+                    <span class="step-icon"><i class="fas fa-download" style="font-size: 24px;"></i></span>
+                    <h3>1. Instalar Plugin</h3>
+                    <p>yarn add @k3tech/backstage-plugin-frontend-addons</p>
+                </div>
+                <div class="next-step">
+                    <span class="step-icon"><i class="fas fa-code" style="font-size: 24px;"></i></span>
+                    <h3>2. Integrar ao EntityPage</h3>
+                    <p>Adicionar rota /addons com EntityAddonsContent</p>
+                </div>
+                <div class="next-step">
+                    <span class="step-icon"><i class="fas fa-tag" style="font-size: 24px;"></i></span>
+                    <h3>3. Anotar Componentes</h3>
+                    <p>Adicionar k3t.io/scaffolder-origin ao catalog</p>
+                </div>
+                <div class="next-step">
+                    <span class="step-icon"><i class="fas fa-plus" style="font-size: 24px;"></i></span>
+                    <h3>4. Criar Templates de Addons</h3>
+                    <p>Criar templates com anotação k3t/supported-by</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 16: Q&A (TRÁS - ESQUERDA) -->
+    <div id="qa" class="step slide" data-x="-1200" data-y="0" data-z="-2000" data-scale="1" data-rotate="0">
+        <div class="slide-content">
+            <h2 class="section-title">❓ Perguntas Frequentes</h2>
+            <div class="qa-list">
+                <div class="qa-item">
+                    <h3>Q: Funciona com monorepos?</h3>
+                    <p>A: Sim! Especifique o versionFile para cada projeto.</p>
+                </div>
+                <div class="qa-item">
+                    <h3>Q: Qual é a performance com muitos addons?</h3>
+                    <p>A: Grid é otimizado, suporta centenas de templates sem lag.</p>
+                </div>
+                <div class="qa-item">
+                    <h3>Q: Posso customizar o visual dos cartões?</h3>
+                    <p>A: Sim! TemplateCard aceita props de customização.</p>
+                </div>
+                <div class="qa-item">
+                    <h3>Q: Há suporte à autenticação customizada?</h3>
+                    <p>A: Sim, herda auth do Backstage automaticamente.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 17: ENCERRAMENTO (TRÁS - CENTRO) -->
+    <div id="encerramento" class="step slide" data-x="0" data-y="0" data-z="-2000" data-rotate="0" data-scale="1">
+        <div class="slide-content center">
+            <h1 class="neon-title massive"><i class="fas fa-heart icon-red"></i> Obrigado!</h1>
+            <h2 class="subtitle">Dúvidas?</h2>
+            <div class="contact-info">
+                <p><i class="fas fa-github icon-white"></i> K3T Backstage Plugins</p>
+                <p><i class="fas fa-book icon-yellow"></i> Documentação: README.md</p>
+                <p><i class="fas fa-package icon-green"></i> NPM: @k3tech/backstage-plugin-frontend-addons</p>
+            </div>
+            <div class="final-cta">
+                <h3><i class="fas fa-rocket icon-yellow"></i> Comece Hoje Mesmo!</h3>
+                <p>Estenda seus componentes com o Entity Addons Plugin</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 18: OVERVIEW FINAL -->
+    <div id="overview" class="step" data-x="0" data-y="0" data-z="0" data-scale="5">
+    </div>
+
+</div>
+
+<div class="hint">
+    <p>Use <strong>espaço</strong> ou <strong>setas</strong> para navegar</p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/impress.js/0.5.3/impress.js" integrity="sha512-trjTnqtVgOcNE5lmLULAVu3XG7rsPSmzpUeRonKGm+N4tOMahSYjMXbH3ICIzMiyuFOfTb0OxvPqp4PXIUb/Jw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+<script>
+    // Inicializar Impress.js
+    impress().init();
+
+    // Gerar formas abstratas aleatórias para cada slide
+    function generateAbstractShapes() {
+        const slides = document.querySelectorAll('.step.slide');
+        const shapeTypes = ['circle', 'blob', 'triangle', 'square', 'hexagon'];
+        const shapeColors = ['purple', 'blue', 'pink', 'yellow', 'green'];
+        const animations = ['float1', 'float2', 'float3', 'pulse', 'rotate'];
+        
+        // Estilos de background: 0 = formas, 1 = constelação, 2 = ondas
+        const backgroundStyles = [0, 1, 2];
+        
+        slides.forEach((slide, index) => {
+            // Escolher estilo de background aleatório
+            const bgStyle = backgroundStyles[Math.floor(Math.random() * backgroundStyles.length)];
+            
+            if (bgStyle === 0) {
+                // Estilo 1: Formas abstratas (original)
+                const bgContainer = document.createElement('div');
+                bgContainer.className = 'abstract-bg';
+                
+                // Gerar 3-5 formas aleatórias por slide
+                const numShapes = Math.floor(Math.random() * 3) + 3; // 3 a 5 formas
+                
+                for (let i = 0; i < numShapes; i++) {
+                    const shape = document.createElement('div');
+                    shape.className = 'shape';
+                    
+                    // Tipo de forma aleatória
+                    const shapeType = shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
+                    shape.classList.add(`shape-${shapeType}`);
+                    
+                    // Cor aleatória
+                    const shapeColor = shapeColors[Math.floor(Math.random() * shapeColors.length)];
+                    shape.classList.add(`shape-${shapeColor}`);
+                    
+                    // Animação aleatória
+                    const animation = animations[Math.floor(Math.random() * animations.length)];
+                    shape.classList.add(`anim-${animation}`);
+                    
+                    // Posição aleatória
+                    const left = Math.random() * 100;
+                    const top = Math.random() * 100;
+                    shape.style.left = `${left}%`;
+                    shape.style.top = `${top}%`;
+                    
+                    // Tamanho aleatório (100px a 300px)
+                    const size = Math.floor(Math.random() * 200) + 100;
+                    shape.style.width = `${size}px`;
+                    shape.style.height = `${size}px`;
+                    
+                    // Delay aleatório para animação
+                    const delay = Math.random() * 5;
+                    shape.style.animationDelay = `${delay}s`;
+                    
+                    bgContainer.appendChild(shape);
+                }
+                
+                slide.insertBefore(bgContainer, slide.firstChild);
+                
+            } else if (bgStyle === 1) {
+                // Estilo 2: Constelação (pontos e linhas)
+                const bgContainer = document.createElement('div');
+                bgContainer.className = 'constellation-bg';
+                
+                // Gerar 15-25 pontos
+                const numDots = Math.floor(Math.random() * 11) + 15;
+                const dots = [];
+                
+                for (let i = 0; i < numDots; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'dot';
+                    
+                    const left = Math.random() * 100;
+                    const top = Math.random() * 100;
+                    dot.style.left = `${left}%`;
+                    dot.style.top = `${top}%`;
+                    
+                    const delay = Math.random() * 3;
+                    dot.style.animationDelay = `${delay}s`;
+                    
+                    // Cores variadas
+                    const colors = ['#c77dff', '#06ffa5', '#ffd60a', '#ff006e'];
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    dot.style.background = color;
+                    dot.style.boxShadow = `0 0 10px ${color}`;
+                    
+                    bgContainer.appendChild(dot);
+                    dots.push({ left, top });
+                }
+                
+                // Conectar pontos próximos com linhas
+                for (let i = 0; i < dots.length; i++) {
+                    for (let j = i + 1; j < dots.length; j++) {
+                        const dx = dots[j].left - dots[i].left;
+                        const dy = dots[j].top - dots[i].top;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        // Conectar apenas pontos próximos (distância < 30)
+                        if (distance < 30) {
+                            const line = document.createElement('div');
+                            line.className = 'line';
+                            line.style.left = `${dots[i].left}%`;
+                            line.style.top = `${dots[i].top}%`;
+                            line.style.width = `${distance}%`;
+                            
+                            const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+                            line.style.transform = `rotate(${angle}deg)`;
+                            
+                            line.style.animation = `lineFade ${3 + Math.random() * 2}s ease-in-out infinite`;
+                            line.style.animationDelay = `${Math.random() * 2}s`;
+                            
+                            bgContainer.appendChild(line);
+                        }
+                    }
+                }
+                
+                slide.insertBefore(bgContainer, slide.firstChild);
+                
+            } else if (bgStyle === 2) {
+                // Estilo 3: Ondas gradientes
+                const bgContainer = document.createElement('div');
+                bgContainer.className = 'waves-bg';
+                
+                const wave1 = document.createElement('div');
+                wave1.className = 'wave wave-1';
+                bgContainer.appendChild(wave1);
+                
+                const wave2 = document.createElement('div');
+                wave2.className = 'wave wave-2';
+                bgContainer.appendChild(wave2);
+                
+                const wave3 = document.createElement('div');
+                wave3.className = 'wave wave-3';
+                bgContainer.appendChild(wave3);
+                
+                slide.insertBefore(bgContainer, slide.firstChild);
+            }
+        });
+    }
+    
+    // Gerar formas quando a página carregar
+    window.addEventListener('load', generateAbstractShapes);
+</script>
+
+</body>
+</html>

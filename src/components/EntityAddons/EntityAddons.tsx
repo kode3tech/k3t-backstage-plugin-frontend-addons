@@ -23,7 +23,7 @@ export function EntityAddonsComponent(_props: any) {
   const catalogApi = useApi(catalogApiRef);
   const [addons, setAddons] = useState<Entity[]>([])
 
-  const templateRef = annotations?.['backstage.io/template-origin'] ?? template ?? name ?? `template:default/${name}`;
+  const templateRef = annotations?.['k3t.io/scaffolder-origin'] ?? template ?? name ?? `template:default/${name}`;
 
   let [, templateKind, templateNamespace, templateName] = /([\w\d-]+:)?([\w\d-]+\/)?([\w\d-]+)$/.exec(templateRef.toString()) ?? [];
 
@@ -34,7 +34,7 @@ export function EntityAddonsComponent(_props: any) {
   useEffect(() => {
     catalogApi.getEntities({
       filter:{
-        ["metadata.annotations.backstage.io/addon-of"]: `${templateRef}`
+        ["metadata.annotations.k3t/supported-by"]: `${templateRef}`
       }
     })
     .then(result => {
