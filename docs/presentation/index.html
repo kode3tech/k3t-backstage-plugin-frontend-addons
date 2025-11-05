@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entity Addons Plugin - Apresentação</title>
+    <title id="page-title">Entity Addons Plugin - Apresentação</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
     <style>
@@ -1158,6 +1158,51 @@ code {
     }
 }
 
+/* Language Switcher */
+.language-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10001;
+    display: flex;
+    gap: 10px;
+    background: rgba(43, 226, 43, 0.15);
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: 1px solid rgba(78, 221, 78, 0.3);
+    box-shadow: 0 4px 16px 0 rgba(78, 221, 78, 0.2);
+}
+
+.lang-btn {
+    background: transparent;
+    border: 2px solid rgba(78, 221, 78, 0.3);
+    color: #aaffb0;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.lang-btn:hover {
+    border-color: #7dff7d;
+    color: #7dff7d;
+    text-shadow: 0 0 10px #7dff7d;
+}
+
+.lang-btn.active {
+    background: linear-gradient(135deg, #4edd4e, #2c7b2c);
+    border-color: #7dff7d;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(78, 221, 78, 0.6);
+    text-shadow: 0 0 5px #7dff7d;
+}
+
 /* Overview slide (transparent) */
 #overview {
     visibility: hidden;
@@ -1165,6 +1210,16 @@ code {
     </style>
 </head>
 <body class="impress-not-supported">
+
+<!-- Language Switcher -->
+<div class="language-switcher">
+    <button class="lang-btn active" data-lang="pt-BR" title="Português (Brasil)">
+        <i class="fas fa-earth-americas"></i> PT-BR
+    </button>
+    <button class="lang-btn" data-lang="en-US" title="English (United States)">
+        <i class="fas fa-globe"></i> EN-US
+    </button>
+</div>
 
 <div id="impress" data-transition-duration="1000">
 
@@ -1175,26 +1230,26 @@ code {
     <!-- SLIDE 1: TÍTULO (FRENTE - CENTRO) -->
     <div id="title" class="step slide" data-x="0" data-y="0" data-z="0" data-scale="4" data-rotate="0">
         <div class="slide-content">
-            <h1 class="neon-title"><i class="fas fa-puzzle-piece icon-yellow"></i> Entity Addons Plugin</h1>
-            <h2 class="subtitle">Marketplace de Addons Inteligente para Backstage</h2>
+            <h1 class="neon-title"><i class="fas fa-puzzle-piece icon-yellow"></i> <span data-i18n="title">Entity Addons Plugin</span></h1>
+            <h2 class="subtitle" data-i18n="subtitle">Marketplace de Addons Inteligente para Backstage</h2>
             <div class="tech-stack">
-                <span class="badge">Backstage</span>
-                <span class="badge">Template-based</span>
-                <span class="badge">Plugin Frontend</span>
+                <span class="badge" data-i18n="badgeBackstage">Backstage</span>
+                <span class="badge" data-i18n="badgeTemplate">Template-based</span>
+                <span class="badge" data-i18n="badgePlugin">Plugin Frontend</span>
             </div>
-            <p class="presenter-note">K3T Backstage Plugin Frontend Addons</p>
+            <p class="presenter-note" data-i18n="presenterNote">K3T Backstage Plugin Frontend Addons</p>
         </div>
     </div>
 
     <!-- SLIDE 2: O PROBLEMA (FRENTE - ESQUERDA) -->
     <div id="intro-problema" class="step slide" data-x="-1200" data-y="0" data-z="2000" data-scale="1" data-rotate="0">
         <div class="slide-content">
-            <h2 class="section-title"><i class="fas fa-exclamation-triangle icon-red"></i> O Problema</h2>
+            <h2 class="section-title"><i class="fas fa-exclamation-triangle icon-red"></i> <span data-i18n="problemTitle">O Problema</span></h2>
             <ul class="feature-list">
-                <li><i class="fas fa-times-circle icon-red"></i> Descoberta de addons é manual e tediosa</li>
-                <li><i class="fas fa-times-circle icon-red"></i> Falta de integração visual no Backstage</li>
-                <li><i class="fas fa-times-circle icon-red"></i> Dificuldade em escalar e gerenciar templates</li>
-                <li><i class="fas fa-times-circle icon-red"></i> Necessidade de pré-popular dados de componentes</li>
+                <li><i class="fas fa-times-circle icon-red"></i> <span data-i18n="problemItem1">Descoberta de addons é manual e tediosa</span></li>
+                <li><i class="fas fa-times-circle icon-red"></i> <span data-i18n="problemItem2">Falta de integração visual no Backstage</span></li>
+                <li><i class="fas fa-times-circle icon-red"></i> <span data-i18n="problemItem3">Dificuldade em escalar e gerenciar templates</span></li>
+                <li><i class="fas fa-times-circle icon-red"></i> <span data-i18n="problemItem4">Necessidade de pré-popular dados de componentes</span></li>
             </ul>
         </div>
     </div>
@@ -1202,14 +1257,14 @@ code {
     <!-- SLIDE 3: A SOLUÇÃO (FRENTE - DIREITA) -->
     <div id="intro-solucao" class="step slide" data-x="1200" data-y="0" data-z="2000" data-scale="1" data-rotate="0">
         <div class="slide-content">
-            <h2 class="section-title"><i class="fas fa-check-circle icon-green"></i> A Solução</h2>
+            <h2 class="section-title"><i class="fas fa-check-circle icon-green"></i> <span data-i18n="solutionTitle">A Solução</span></h2>
             <div class="solution-box">
-                <h3>Entity Addons Plugin</h3>
+                <h3 data-i18n="solutionSubtitle">Entity Addons Plugin</h3>
                 <ul class="feature-list">
-                    <li><i class="fas fa-check icon-green"></i> Descoberta inteligente de addons</li>
-                    <li><i class="fas fa-check icon-green"></i> Integração visual com Backstage</li>
-                    <li><i class="fas fa-check icon-green"></i> Template-based marketplace</li>
-                    <li><i class="fas fa-check icon-green"></i> Pré-população automática de dados</li>
+                    <li><i class="fas fa-check icon-green"></i> <span data-i18n="solutionItem1">Descoberta inteligente de addons</span></li>
+                    <li><i class="fas fa-check icon-green"></i> <span data-i18n="solutionItem2">Integração visual com Backstage</span></li>
+                    <li><i class="fas fa-check icon-green"></i> <span data-i18n="solutionItem3">Template-based marketplace</span></li>
+                    <li><i class="fas fa-check icon-green"></i> <span data-i18n="solutionItem4">Pré-população automática de dados</span></li>
                 </ul>
             </div>
         </div>
@@ -1218,22 +1273,22 @@ code {
     <!-- SLIDE 4: FUNCIONALIDADES (TOPO - ESQUERDA) -->
     <div id="funcionalidades" class="step slide" data-x="-1200" data-y="-1200" data-z="2000" data-scale="1" data-rotate="0">
         <div class="slide-content">
-            <h1 class="neon-title"><i class="fas fa-cogs icon-white"></i> Características</h1>
+            <h1 class="neon-title"><i class="fas fa-cogs icon-white"></i> <span data-i18n="featuresTitle">Características</span></h1>
             <div class="grid-3">
                 <div class="card">
-                    <h3><i class="fas fa-plug icon-green"></i> Template-based</h3>
-                    <p>Crie templates reutilizáveis</p>
-                    <span class="badge-small">Escalável</span>
+                    <h3><i class="fas fa-plug icon-green"></i> <span data-i18n="featureTemplate">Template-based</span></h3>
+                    <p data-i18n="featureTemplateDesc">Crie templates reutilizáveis</p>
+                    <span class="badge-small" data-i18n="featureScalable">Escalável</span>
                 </div>
                 <div class="card">
-                    <h3><i class="fas fa-filter icon-yellow"></i> Smart Filtering</h3>
-                    <p>Descubra addons relevantes</p>
-                    <span class="badge-small">Inteligente</span>
+                    <h3><i class="fas fa-filter icon-yellow"></i> <span data-i18n="featureFilter">Smart Filtering</span></h3>
+                    <p data-i18n="featureFilterDesc">Descubra addons relevantes</p>
+                    <span class="badge-small" data-i18n="featureSmart">Inteligente</span>
                 </div>
                 <div class="card">
-                    <h3><i class="fas fa-rocket icon-purple"></i> One-Click</h3>
-                    <p>Integração automatizada</p>
-                    <span class="badge-small">Fácil</span>
+                    <h3><i class="fas fa-rocket icon-purple"></i> <span data-i18n="featureOneClick">One-Click</span></h3>
+                    <p data-i18n="featureOneClickDesc">Integração automatizada</p>
+                    <span class="badge-small" data-i18n="featureEasy">Fácil</span>
                 </div>
             </div>
         </div>
@@ -1242,19 +1297,19 @@ code {
     <!-- SLIDE 5: ARQUITETURA (TOPO - CENTRO) -->
     <div id="arquitetura" class="step slide" data-x="0" data-y="-1200" data-z="2000" data-scale="1" data-rotate="0">
         <div class="slide-content">
-            <h2 class="section-title"><i class="fas fa-sitemap icon-white"></i> Arquitetura & Ligação de Templates</h2>
+            <h2 class="section-title"><i class="fas fa-sitemap icon-white"></i> <span data-i18n="architectureTitle">Arquitetura & Ligação de Templates</span></h2>
             <div class="grid-2">
                 <div class="method-card">
-                    <h3><i class="fas fa-tag icon-purple"></i> Anotação de Componente</h3>
+                    <h3><i class="fas fa-tag icon-purple"></i> <span data-i18n="architectureAnnotation">Anotação de Componente</span></h3>
                     <pre class="code-block"><code class="language-yaml">k3t.io/scaffolder-origin:
   template:default/microservice-template</code></pre>
-                    <p class="note">Define qual template criou o componente</p>
+                    <p class="note" data-i18n="architectureDefines">Define qual template criou o componente</p>
                 </div>
                 <div class="method-card">
-                    <h3><i class="fas fa-link icon-yellow"></i> Anotação de Addon</h3>
+                    <h3><i class="fas fa-link icon-yellow"></i> <span data-i18n="architectureAddonAnnotation">Anotação de Addon</span></h3>
                     <pre class="code-block"><code class="language-yaml">k3t/supported-by:
   template:default/microservice-template</code></pre>
-                    <p class="note">Indica qual template este addon estende</p>
+                    <p class="note" data-i18n="architectureIndicates">Indica qual template este addon estende</p>
                 </div>
             </div>
         </div>
@@ -1263,32 +1318,32 @@ code {
     <!-- SLIDE 6: FLUXO (TOPO - DIREITA) -->
     <div id="fluxo" class="step slide" data-x="1200" data-y="-1200" data-z="2000" data-scale="1" data-rotate="0">
         <div class="slide-content">
-            <h2 class="section-title"><i class="fas fa-arrow-right-long icon-yellow"></i> Fluxo de Funcionamento</h2>
+            <h2 class="section-title"><i class="fas fa-arrow-right-long icon-yellow"></i> <span data-i18n="flowTitle">Fluxo de Funcionamento</span></h2>
             <div class="setup-steps">
                 <div class="setup-step">
                     <span class="step-number">1</span>
-                    <h3>Visualizar Componente</h3>
-                    <p>Acesse a aba "Addons" na página do componente</p>
+                    <h3 data-i18n="flowStep1">Visualizar Componente</h3>
+                    <p data-i18n="flowStep1Desc">Acesse a aba "Addons" na página do componente</p>
                 </div>
                 <div class="setup-step">
                     <span class="step-number">2</span>
-                    <h3>Detecção Automática</h3>
-                    <p>Plugin lê annotation <code>template-origin</code></p>
+                    <h3 data-i18n="flowStep2">Detecção Automática</h3>
+                    <p data-i18n="flowStep2Desc">Plugin lê annotation template-origin</p>
                 </div>
                 <div class="setup-step">
                     <span class="step-number">3</span>
-                    <h3>Consulta o Catálogo</h3>
-                    <p>Busca templates com <code>addon-of</code> correspondente</p>
+                    <h3 data-i18n="flowStep3">Consulta o Catálogo</h3>
+                    <p data-i18n="flowStep3Desc">Busca templates com addon-of correspondente</p>
                 </div>
                 <div class="setup-step">
                     <span class="step-number">4</span>
-                    <h3>Exibir Grid de Addons</h3>
-                    <p>Mostra cartões dos addons disponíveis</p>
+                    <h3 data-i18n="flowStep4">Exibir Grid de Addons</h3>
+                    <p data-i18n="flowStep4Desc">Mostra cartões dos addons disponíveis</p>
                 </div>
                 <div class="setup-step">
                     <span class="step-number">5</span>
-                    <h3>Clicar no Addon</h3>
-                    <p>Scaffolder pré-populado com <code>component_ref</code></p>
+                    <h3 data-i18n="flowStep5">Clicar no Addon</h3>
+                    <p data-i18n="flowStep5Desc">Scaffolder pré-populado com component_ref</p>
                 </div>
             </div>
         </div>
@@ -1301,22 +1356,22 @@ code {
     <!-- SLIDE 7: INSTALAÇÃO (FUNDO - ESQUERDA) -->
     <div id="instalacao" class="step slide" data-x="-1200" data-y="1200" data-z="2000" data-scale="1" data-rotate="0">
         <div class="slide-content">
-            <h1 class="neon-title"><i class="fas fa-download icon-yellow"></i> Instalação</h1>
+            <h1 class="neon-title"><i class="fas fa-download icon-yellow"></i> <span data-i18n="installationTitle">Instalação</span></h1>
             <div class="setup-steps">
                 <div class="setup-step">
                     <span class="step-number">1</span>
-                    <h3>Instalar via Yarn/NPM</h3>
+                    <h3 data-i18n="installationStep1">Instalar via Yarn/NPM</h3>
                     <pre class="code-block mini"><code class="language-bash">yarn add @k3tech/backstage-plugin-frontend-addons</code></pre>
                 </div>
                 <div class="setup-step">
                     <span class="step-number">2</span>
-                    <h3>Integrar ao EntityPage</h3>
-                    <p>Arquivo: <code>packages/app/src/components/catalog/EntityPage.tsx</code></p>
+                    <h3 data-i18n="installationStep2">Integrar ao EntityPage</h3>
+                    <p data-i18n="installationStep2Desc">Arquivo: packages/app/src/components/catalog/EntityPage.tsx</p>
                 </div>
                 <div class="setup-step">
                     <span class="step-number">3</span>
-                    <h3>Adicionar Rota</h3>
-                    <p>Criar rota "/addons" com <code>EntityAddonsContent</code></p>
+                    <h3 data-i18n="installationStep3">Adicionar Rota</h3>
+                    <p data-i18n="installationStep3Desc">Criar rota "/addons" com EntityAddonsContent</p>
                 </div>
             </div>
         </div>
@@ -1329,7 +1384,7 @@ code {
     <!-- SLIDE 8: CÓDIGO (FUNDO - CENTRO) -->
     <div id="instalacao-codigo" class="step slide" data-x="0" data-y="1200" data-z="2000" data-scale="1" data-rotate="0">
       <div class="slide-content">
-        <h2 class="section-title"><i class="fas fa-code icon-green"></i> Código: EntityPage.tsx</h2>
+        <h2 class="section-title"><i class="fas fa-code icon-green"></i> <span data-i18n="codeTitle">Código: EntityPage.tsx</span></h2>
         <pre class="code-block"><code class="language-tsx">import { EntityAddonsContent } from '@k3tech/backstage-plugin-frontend-addons';
 
 const defaultEntityPage = (
@@ -1350,11 +1405,11 @@ const defaultEntityPage = (
     <!-- SLIDE 9: ANOTAÇÕES (FUNDO - DIREITA) -->
     <div id="anotacoes" class="step slide" data-x="1200" data-y="1200" data-z="2000" data-scale="1" data-rotate="0">
         <div class="slide-content">
-            <h2 class="section-title"><i class="fas fa-bookmark icon-yellow"></i> Anotações de Ligação</h2>
+            <h2 class="section-title"><i class="fas fa-bookmark icon-yellow"></i> <span data-i18n="annotationsTitle">Anotações de Ligação</span></h2>
             <div class="setup-steps">
                 <div class="setup-step">
                     <span class="step-number">1</span>
-                    <h3>Component: template-origin</h3>
+                    <h3 data-i18n="annotationsStep1">Component: template-origin</h3>
                     <pre class="code-block mini"><code class="language-yaml">kind: Component
 metadata:
   name: my-service
@@ -1364,7 +1419,7 @@ metadata:
                 </div>
                 <div class="setup-step">
                     <span class="step-number">2</span>
-                    <h3>Template: addon-of</h3>
+                    <h3 data-i18n="annotationsStep2">Template: addon-of</h3>
                     <pre class="code-block mini"><code class="language-yaml">kind: Template
 metadata:
   name: add-monitoring
@@ -1377,34 +1432,34 @@ metadata:
     </div>    <!-- SLIDE 10: COMPONENTES (ESQUERDA - TOPO) -->
     <div id="componentes" class="step slide" data-x="-1200" data-y="-1200" data-z="4000" data-scale="1" data-rotate="0">
         <div class="slide-content">
-            <h2 class="section-title"><i class="fas fa-cube icon-purple"></i> Componentes Exportados</h2>
+            <h2 class="section-title"><i class="fas fa-cube icon-purple"></i> <span data-i18n="componentsTitle">Componentes Exportados</span></h2>
             <div class="grid-2">
                 <div class="card">
-                    <h3>EntityAddonsContent</h3>
-                    <p>Componente principal para exibir addons</p>
+                    <h3 data-i18n="componentsEntityAddons">EntityAddonsContent</h3>
+                    <p data-i18n="componentsEntityAddonsDesc">Componente principal para exibir addons</p>
                     <div class="code-example">
-                        <code>Props: variant</code>
+                        <code data-i18n="componentsProps">Props: variant</code>
                     </div>
                 </div>
                 <div class="card">
-                    <h3>TemplateCard</h3>
-                    <p>Cartão individual de template</p>
+                    <h3 data-i18n="componentsTemplateCard">TemplateCard</h3>
+                    <p data-i18n="componentsTemplateCardDesc">Cartão individual de template</p>
                     <div class="code-example">
-                        <code>Props: template</code>
+                        <code data-i18n="componentsPropTemplate">Props: template</code>
                     </div>
                 </div>
                 <div class="card">
-                    <h3>entityAddonsPlugin</h3>
-                    <p>Plugin factory function</p>
+                    <h3 data-i18n="componentsPlugin">entityAddonsPlugin</h3>
+                    <p data-i18n="componentsPluginDesc">Plugin factory function</p>
                     <div class="code-example">
-                        <code>App integration</code>
+                        <code data-i18n="componentsAppIntegration">App integration</code>
                     </div>
                 </div>
                 <div class="card">
-                    <h3>CardHeader</h3>
-                    <p>Header do template card</p>
+                    <h3 data-i18n="componentsCardHeader">CardHeader</h3>
+                    <p data-i18n="componentsCardHeaderDesc">Header do template card</p>
                     <div class="code-example">
-                        <code>Sub-component</code>
+                        <code data-i18n="componentsSubComponent">Sub-component</code>
                     </div>
                 </div>
             </div>
@@ -1418,7 +1473,7 @@ metadata:
     <!-- SLIDE 11: EXEMPLO ADDON (ESQUERDA - CENTRO) -->
     <div id="exemplo-addon" class="step slide" data-x="-1200" data-y="0" data-z="4000" data-scale="1" data-rotate="0">
         <div class="slide-content">
-            <h2 class="section-title"><i class="fas fa-lightbulb icon-yellow"></i> Exemplo: Template de Addon</h2>
+            <h2 class="section-title"><i class="fas fa-lightbulb icon-yellow"></i> <span data-i18n="exampleTitle">Exemplo: Template de Addon</span></h2>
             <pre class="code-block mini"><code class="language-yaml">apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
@@ -1451,27 +1506,27 @@ spec:
     <!-- SLIDE 12: BOAS PRÁTICAS (ESQUERDA - FUNDO) -->
     <div id="boas-praticas" class="step slide" data-x="-1200" data-y="1200" data-z="4000" data-scale="1" data-rotate="0">
         <div class="slide-content">
-            <h2 class="section-title"><i class="fas fa-thumbs-up icon-green"></i> Boas Práticas</h2>
+            <h2 class="section-title"><i class="fas fa-thumbs-up icon-green"></i> <span data-i18n="bestPracticesTitle">Boas Práticas</span></h2>
             <div class="setup-steps">
                 <div class="setup-step">
                     <span class="step-number">1</span>
-                    <h3>Nomenclatura Consistente</h3>
-                    <p>Use padrão <code>add-feature-name</code> para templates</p>
+                    <h3 data-i18n="bestPracticeName">Nomenclatura Consistente</h3>
+                    <p data-i18n="bestPracticeNameDesc">Use padrão add-feature-name para templates</p>
                 </div>
                 <div class="setup-step">
                     <span class="step-number">2</span>
-                    <h3>Descrições Claras</h3>
-                    <p>Explique o que cada addon faz</p>
+                    <h3 data-i18n="bestPracticeDesc">Descrições Claras</h3>
+                    <p data-i18n="bestPracticeDescDesc">Explique o que cada addon faz</p>
                 </div>
                 <div class="setup-step">
                     <span class="step-number">3</span>
-                    <h3>Testes Antes de Produção</h3>
-                    <p>Valide com componentes exemplo</p>
+                    <h3 data-i18n="bestPracticeTest">Testes Antes de Produção</h3>
+                    <p data-i18n="bestPracticeTestDesc">Valide com componentes exemplo</p>
                 </div>
                 <div class="setup-step">
                     <span class="step-number">4</span>
-                    <h3>Metadados Completos</h3>
-                    <p>Inclua tags, owner e lifecycle</p>
+                    <h3 data-i18n="bestPracticeMetadata">Metadados Completos</h3>
+                    <p data-i18n="bestPracticeMetadataDesc">Inclua tags, owner e lifecycle</p>
                 </div>
             </div>
         </div>
@@ -1480,19 +1535,19 @@ spec:
     <!-- SLIDE 13: TROUBLESHOOTING (DIREITA - TOPO) -->
     <div id="troubleshooting" class="step slide" data-x="1200" data-y="-1200" data-z="4000" data-scale="1" data-rotate="0">
         <div class="slide-content">
-            <h2 class="section-title"><i class="fas fa-wrench icon-red"></i> Troubleshooting</h2>
+            <h2 class="section-title"><i class="fas fa-wrench icon-red"></i> <span data-i18n="troubleshootingTitle">Troubleshooting</span></h2>
             <div class="qa-list">
                 <div class="qa-item">
-                    <h3><i class="fas fa-circle-question icon-yellow"></i> Addons não aparecem?</h3>
-                    <p>✓ Verifique se as anotações coincidem exatamente<br>✓ Execute refresh do catálogo<br>✓ Valide YAML do template</p>
+                    <h3><i class="fas fa-circle-question icon-yellow"></i> <span data-i18n="troubleQ1">Addons não aparecem?</span></h3>
+                    <p data-i18n-html="troubleA1">✓ Verifique se as anotações coincidem exatamente<br>✓ Execute refresh do catálogo<br>✓ Valide YAML do template</p>
                 </div>
                 <div class="qa-item">
-                    <h3><i class="fas fa-circle-question icon-yellow"></i> Pré-população não funciona?</h3>
-                    <p>✓ Componente deve estar acessível no catálogo<br>✓ Verifique filtros do EntityPicker<br>✓ Valide codificação de URL</p>
+                    <h3><i class="fas fa-circle-question icon-yellow"></i> <span data-i18n="troubleQ2">Pré-população não funciona?</span></h3>
+                    <p data-i18n-html="troubleA2">✓ Componente deve estar acessível no catálogo<br>✓ Verifique filtros do EntityPicker<br>✓ Valide codificação de URL</p>
                 </div>
                 <div class="qa-item">
-                    <h3><i class="fas fa-circle-question icon-yellow"></i> Erro ao renderizar cartão?</h3>
-                    <p>✓ Inspect no navegador (F12)<br>✓ Verifique console de erros<br>✓ Valide props do TemplateCard</p>
+                    <h3><i class="fas fa-circle-question icon-yellow"></i> <span data-i18n="troubleQ3">Erro ao renderizar cartão?</span></h3>
+                    <p data-i18n-html="troubleA3">✓ Inspect no navegador (F12)<br>✓ Verifique console de erros<br>✓ Valide props do TemplateCard</p>
                 </div>
             </div>
         </div>
@@ -1505,30 +1560,30 @@ spec:
     <!-- SLIDE 14: BENEFÍCIOS (DIREITA - CENTRO) -->
     <div id="beneficios" class="step slide" data-x="1200" data-y="0" data-z="4000" data-scale="1" data-rotate="0">
         <div class="slide-content">
-            <h1 class="neon-title">💎 Benefícios</h1>
+            <h1 class="neon-title">💎 <span data-i18n="benefitsTitle">Benefícios</span></h1>
             <div class="grid-2">
                 <div class="benefit-card">
-                    <h3><i class="fas fa-wrench icon-red"></i> Técnicos</h3>
+                    <h3><i class="fas fa-wrench icon-red"></i> <span data-i18n="benefitsTechnical">Técnicos</span></h3>
                     <ul class="feature-list">
-                        <li><i class="fas fa-check icon-green"></i> Descoberta automática</li>
-                        <li><i class="fas fa-check icon-green"></i> Integração sem código</li>
-                        <li><i class="fas fa-check icon-green"></i> Reutilização de templates</li>
-                        <li><i class="fas fa-check icon-green"></i> Zero dependências</li>
+                        <li><i class="fas fa-check icon-green"></i> <span data-i18n="benefitsAutoDiscovery">Descoberta automática</span></li>
+                        <li><i class="fas fa-check icon-green"></i> <span data-i18n="benefitsCodeless">Integração sem código</span></li>
+                        <li><i class="fas fa-check icon-green"></i> <span data-i18n="benefitsReusability">Reutilização de templates</span></li>
+                        <li><i class="fas fa-check icon-green"></i> <span data-i18n="benefitsZeroDeps">Zero dependências</span></li>
                     </ul>
                 </div>
                 <div class="benefit-card">
-                    <h3><i class="fas fa-chart-line icon-yellow"></i> Organizacionais</h3>
+                    <h3><i class="fas fa-chart-line icon-yellow"></i> <span data-i18n="benefitsOrg">Organizacionais</span></h3>
                     <ul class="feature-list">
-                        <li><i class="fas fa-chart-line icon-green"></i> DX aprimorada</li>
-                        <li><i class="fas fa-bullseye icon-green"></i> Escalabilidade</li>
-                        <li><i class="fas fa-chart-bar icon-green"></i> Padronização</li>
-                        <li><i class="fas fa-piggy-bank icon-green"></i> Eficiência operacional</li>
+                        <li><i class="fas fa-chart-line icon-green"></i> <span data-i18n="benefitsDX">DX aprimorada</span></li>
+                        <li><i class="fas fa-bullseye icon-green"></i> <span data-i18n="benefitsScalability">Escalabilidade</span></li>
+                        <li><i class="fas fa-chart-bar icon-green"></i> <span data-i18n="benefitsStandardization">Padronização</span></li>
+                        <li><i class="fas fa-piggy-bank icon-green"></i> <span data-i18n="benefitsEfficiency">Eficiência operacional</span></li>
                     </ul>
                 </div>
             </div>
             <div class="roi-box">
-                <h3><i class="fas fa-rocket icon-yellow"></i> Resultado</h3>
-                <p><strong>Marketplace de Addons</strong> integrado no Backstage</p>
+                <h3><i class="fas fa-rocket icon-yellow"></i> <span data-i18n="benefitsResult">Resultado</span></h3>
+                <p><strong data-i18n="benefitsMarketplace">Marketplace de Addons</strong> integrado no Backstage</p>
             </div>
         </div>
     </div>
@@ -1536,27 +1591,27 @@ spec:
     <!-- SLIDE 15: PRÓXIMOS PASSOS (DIREITA - FUNDO) -->
     <div id="proximos-passos" class="step slide" data-x="1200" data-y="1200" data-z="4000" data-scale="1" data-rotate="0">
         <div class="slide-content">
-            <h2 class="section-title"><i class="fas fa-rocket icon-white"></i> Próximos Passos</h2>
+            <h2 class="section-title"><i class="fas fa-rocket icon-white"></i> <span data-i18n="nextStepsTitle">Próximos Passos</span></h2>
             <div class="steps-list">
                 <div class="next-step">
                     <span class="step-icon"><i class="fas fa-download" style="font-size: 24px;"></i></span>
-                    <h3>1. Instalar Plugin</h3>
-                    <p>yarn add @k3tech/backstage-plugin-frontend-addons</p>
+                    <h3>1. <span data-i18n="nextStep1">Instalar Plugin</span></h3>
+                    <p data-i18n="nextStep1Desc">yarn add @k3tech/backstage-plugin-frontend-addons</p>
                 </div>
                 <div class="next-step">
                     <span class="step-icon"><i class="fas fa-code" style="font-size: 24px;"></i></span>
-                    <h3>2. Integrar ao EntityPage</h3>
-                    <p>Adicionar rota /addons com EntityAddonsContent</p>
+                    <h3>2. <span data-i18n="nextStep2">Integrar ao EntityPage</span></h3>
+                    <p data-i18n="nextStep2Desc">Adicionar rota /addons com EntityAddonsContent</p>
                 </div>
                 <div class="next-step">
                     <span class="step-icon"><i class="fas fa-tag" style="font-size: 24px;"></i></span>
-                    <h3>3. Anotar Componentes</h3>
-                    <p>Adicionar k3t.io/scaffolder-origin ao catalog</p>
+                    <h3>3. <span data-i18n="nextStep3">Anotar Componentes</span></h3>
+                    <p data-i18n="nextStep3Desc">Adicionar k3t.io/scaffolder-origin ao catalog</p>
                 </div>
                 <div class="next-step">
                     <span class="step-icon"><i class="fas fa-plus" style="font-size: 24px;"></i></span>
-                    <h3>4. Criar Templates de Addons</h3>
-                    <p>Criar templates com anotação k3t/supported-by</p>
+                    <h3>4. <span data-i18n="nextStep4">Criar Templates de Addons</span></h3>
+                    <p data-i18n="nextStep4Desc">Criar templates com anotação k3t/supported-by</p>
                 </div>
             </div>
         </div>
@@ -1565,23 +1620,23 @@ spec:
     <!-- SLIDE 16: Q&A (TRÁS - ESQUERDA) -->
     <div id="qa" class="step slide" data-x="-1200" data-y="0" data-z="-2000" data-scale="1" data-rotate="0">
         <div class="slide-content">
-            <h2 class="section-title">❓ Perguntas Frequentes</h2>
+            <h2 class="section-title">❓ <span data-i18n="faqTitle">Perguntas Frequentes</span></h2>
             <div class="qa-list">
                 <div class="qa-item">
-                    <h3>Q: Funciona com monorepos?</h3>
-                    <p>A: Sim! Especifique o versionFile para cada projeto.</p>
+                    <h3 data-i18n="faqQ1">Q: Funciona com monorepos?</h3>
+                    <p data-i18n="faqA1">A: Sim! Especifique o versionFile para cada projeto.</p>
                 </div>
                 <div class="qa-item">
-                    <h3>Q: Qual é a performance com muitos addons?</h3>
-                    <p>A: Grid é otimizado, suporta centenas de templates sem lag.</p>
+                    <h3 data-i18n="faqQ2">Q: Qual é a performance com muitos addons?</h3>
+                    <p data-i18n="faqA2">A: Grid é otimizado, suporta centenas de templates sem lag.</p>
                 </div>
                 <div class="qa-item">
-                    <h3>Q: Posso customizar o visual dos cartões?</h3>
-                    <p>A: Sim! TemplateCard aceita props de customização.</p>
+                    <h3 data-i18n="faqQ3">Q: Posso customizar o visual dos cartões?</h3>
+                    <p data-i18n="faqA3">A: Sim! TemplateCard aceita props de customização.</p>
                 </div>
                 <div class="qa-item">
-                    <h3>Q: Há suporte à autenticação customizada?</h3>
-                    <p>A: Sim, herda auth do Backstage automaticamente.</p>
+                    <h3 data-i18n="faqQ4">Q: Há suporte à autenticação customizada?</h3>
+                    <p data-i18n="faqA4">A: Sim, herda auth do Backstage automaticamente.</p>
                 </div>
             </div>
         </div>
@@ -1590,16 +1645,16 @@ spec:
     <!-- SLIDE 17: ENCERRAMENTO (TRÁS - CENTRO) -->
     <div id="encerramento" class="step slide" data-x="0" data-y="0" data-z="-2000" data-rotate="0" data-scale="1">
         <div class="slide-content center">
-            <h1 class="neon-title massive"><i class="fas fa-heart icon-red"></i> Obrigado!</h1>
-            <h2 class="subtitle">Dúvidas?</h2>
+            <h1 class="neon-title massive"><i class="fas fa-heart icon-red"></i> <span data-i18n="closingTitle">Obrigado!</span></h1>
+            <h2 class="subtitle" data-i18n="closingSubtitle">Dúvidas?</h2>
             <div class="contact-info">
-                <p><i class="fas fa-github icon-white"></i> K3T Backstage Plugins</p>
-                <p><i class="fas fa-book icon-yellow"></i> Documentação: README.md</p>
-                <p><i class="fas fa-package icon-green"></i> NPM: @k3tech/backstage-plugin-frontend-addons</p>
+                <p><i class="fas fa-github icon-white"></i> <span data-i18n="closingGithub">K3T Backstage Plugins</span></p>
+                <p><i class="fas fa-book icon-yellow"></i> <span data-i18n="closingDocs">Documentação: README.md</span></p>
+                <p><i class="fas fa-package icon-green"></i> <span data-i18n="closingNPM">NPM: @k3tech/backstage-plugin-frontend-addons</span></p>
             </div>
             <div class="final-cta">
-                <h3><i class="fas fa-rocket icon-yellow"></i> Comece Hoje Mesmo!</h3>
-                <p>Estenda seus componentes com o Entity Addons Plugin</p>
+                <h3><i class="fas fa-rocket icon-yellow"></i> <span data-i18n="closingCTA">Comece Hoje Mesmo!</span></h3>
+                <p data-i18n="closingCTADesc">Estenda seus componentes com o Entity Addons Plugin</p>
             </div>
         </div>
     </div>
@@ -1611,7 +1666,7 @@ spec:
 </div>
 
 <div class="hint">
-    <p>Use <strong>espaço</strong> ou <strong>setas</strong> para navegar</p>
+    <p data-i18n-html="navHint">Use <strong>espaço</strong> ou <strong>setas</strong> para navegar</p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/impress.js/0.5.3/impress.js" integrity="sha512-trjTnqtVgOcNE5lmLULAVu3XG7rsPSmzpUeRonKGm+N4tOMahSYjMXbH3ICIzMiyuFOfTb0OxvPqp4PXIUb/Jw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -1619,6 +1674,412 @@ spec:
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
 <script>
+    // ===== INTERNATIONALIZATION (I18N) =====
+    const translations = {
+        'pt-BR': {
+            // Page
+            pageTitle: 'Entity Addons Plugin - Apresentação',
+            navHint: 'Use <strong>espaço</strong> ou <strong>setas</strong> para navegar',
+            
+            // Slide 1: Title
+            title: 'Entity Addons Plugin',
+            subtitle: 'Marketplace de Addons Inteligente para Backstage',
+            badgeBackstage: 'Backstage',
+            badgeTemplate: 'Template-based',
+            badgePlugin: 'Plugin Frontend',
+            presenterNote: 'K3T Backstage Plugin Frontend Addons',
+            
+            // Slide 2: Problem
+            problemTitle: 'O Problema',
+            problemItem1: 'Descoberta de addons é manual e tediosa',
+            problemItem2: 'Falta de integração visual no Backstage',
+            problemItem3: 'Dificuldade em escalar e gerenciar templates',
+            problemItem4: 'Necessidade de pré-popular dados de componentes',
+            
+            // Slide 3: Solution
+            solutionTitle: 'A Solução',
+            solutionSubtitle: 'Entity Addons Plugin',
+            solutionItem1: 'Descoberta inteligente de addons',
+            solutionItem2: 'Integração visual com Backstage',
+            solutionItem3: 'Template-based marketplace',
+            solutionItem4: 'Pré-população automática de dados',
+            
+            // Slide 4: Features
+            featuresTitle: 'Características',
+            featureTemplate: 'Template-based',
+            featureTemplateDesc: 'Crie templates reutilizáveis',
+            featureScalable: 'Escalável',
+            featureFilter: 'Smart Filtering',
+            featureFilterDesc: 'Descubra addons relevantes',
+            featureSmart: 'Inteligente',
+            featureOneClick: 'One-Click',
+            featureOneClickDesc: 'Integração automatizada',
+            featureEasy: 'Fácil',
+            
+            // Slide 5: Architecture
+            architectureTitle: 'Arquitetura & Ligação de Templates',
+            architectureAnnotation: 'Anotação de Componente',
+            architectureTemplateOrigin: 'template-origin',
+            architectureDefines: 'Define qual template criou o componente',
+            architectureAddonAnnotation: 'Anotação de Addon',
+            architectureSupportedBy: 'addon-of',
+            architectureIndicates: 'Indica qual template este addon estende',
+            
+            // Slide 6: Flow
+            flowTitle: 'Fluxo de Funcionamento',
+            flowStep1: 'Visualizar Componente',
+            flowStep1Desc: 'Acesse a aba "Addons" na página do componente',
+            flowStep2: 'Detecção Automática',
+            flowStep2Desc: 'Plugin lê annotation template-origin',
+            flowStep3: 'Consulta o Catálogo',
+            flowStep3Desc: 'Busca templates com addon-of correspondente',
+            flowStep4: 'Exibir Grid de Addons',
+            flowStep4Desc: 'Mostra cartões dos addons disponíveis',
+            flowStep5: 'Clicar no Addon',
+            flowStep5Desc: 'Scaffolder pré-populado com component_ref',
+            
+            // Slide 7: Installation
+            installationTitle: 'Instalação',
+            installationStep1: 'Instalar via Yarn/NPM',
+            installationStep2: 'Integrar ao EntityPage',
+            installationStep2Desc: 'Arquivo: packages/app/src/components/catalog/EntityPage.tsx',
+            installationStep3: 'Adicionar Rota',
+            installationStep3Desc: 'Criar rota "/addons" com EntityAddonsContent',
+            
+            // Slide 8: Code
+            codeTitle: 'Código: EntityPage.tsx',
+            
+            // Slide 9: Annotations
+            annotationsTitle: 'Anotações de Ligação',
+            annotationsStep1: 'Component: template-origin',
+            annotationsStep2: 'Template: addon-of',
+            
+            // Slide 10: Components
+            componentsTitle: 'Componentes Exportados',
+            componentsEntityAddons: 'EntityAddonsContent',
+            componentsEntityAddonsDesc: 'Componente principal para exibir addons',
+            componentsProps: 'Props: variant',
+            componentsTemplateCard: 'TemplateCard',
+            componentsTemplateCardDesc: 'Cartão individual de template',
+            componentsPropTemplate: 'Props: template',
+            componentsPlugin: 'entityAddonsPlugin',
+            componentsPluginDesc: 'Plugin factory function',
+            componentsAppIntegration: 'App integration',
+            componentsCardHeader: 'CardHeader',
+            componentsCardHeaderDesc: 'Header do template card',
+            componentsSubComponent: 'Sub-component',
+            
+            // Slide 11: Example
+            exampleTitle: 'Exemplo: Template de Addon',
+            
+            // Slide 12: Best Practices
+            bestPracticesTitle: 'Boas Práticas',
+            bestPracticeName: 'Nomenclatura Consistente',
+            bestPracticeNameDesc: 'Use padrão add-feature-name para templates',
+            bestPracticeDesc: 'Descrições Claras',
+            bestPracticeDescDesc: 'Explique o que cada addon faz',
+            bestPracticeTest: 'Testes Antes de Produção',
+            bestPracticeTestDesc: 'Valide com componentes exemplo',
+            bestPracticeMetadata: 'Metadados Completos',
+            bestPracticeMetadataDesc: 'Inclua tags, owner e lifecycle',
+            
+            // Slide 13: Troubleshooting
+            troubleshootingTitle: 'Troubleshooting',
+            troubleQ1: 'Addons não aparecem?',
+            troubleA1: '✓ Verifique se as anotações coincidem exatamente<br>✓ Execute refresh do catálogo<br>✓ Valide YAML do template',
+            troubleQ2: 'Pré-população não funciona?',
+            troubleA2: '✓ Componente deve estar acessível no catálogo<br>✓ Verifique filtros do EntityPicker<br>✓ Valide codificação de URL',
+            troubleQ3: 'Erro ao renderizar cartão?',
+            troubleA3: '✓ Inspect no navegador (F12)<br>✓ Verifique console de erros<br>✓ Valide props do TemplateCard',
+            
+            // Slide 14: Benefits
+            benefitsTitle: 'Benefícios',
+            benefitsTechnical: 'Técnicos',
+            benefitsAutoDiscovery: 'Descoberta automática',
+            benefitsCodeless: 'Integração sem código',
+            benefitsReusability: 'Reutilização de templates',
+            benefitsZeroDeps: 'Zero dependências',
+            benefitsOrg: 'Organizacionais',
+            benefitsDX: 'DX aprimorada',
+            benefitsScalability: 'Escalabilidade',
+            benefitsStandardization: 'Padronização',
+            benefitsEfficiency: 'Eficiência operacional',
+            benefitsResult: 'Resultado',
+            benefitsMarketplace: 'Marketplace de Addons integrado no Backstage',
+            
+            // Slide 15: Next Steps
+            nextStepsTitle: 'Próximos Passos',
+            nextStep1: 'Instalar Plugin',
+            nextStep1Desc: 'yarn add @k3tech/backstage-plugin-frontend-addons',
+            nextStep2: 'Integrar ao EntityPage',
+            nextStep2Desc: 'Adicionar rota /addons com EntityAddonsContent',
+            nextStep3: 'Anotar Componentes',
+            nextStep3Desc: 'Adicionar k3t.io/scaffolder-origin ao catalog',
+            nextStep4: 'Criar Templates de Addons',
+            nextStep4Desc: 'Criar templates com anotação k3t/supported-by',
+            
+            // Slide 16: FAQ
+            faqTitle: 'Perguntas Frequentes',
+            faqQ1: 'Q: Funciona com monorepos?',
+            faqA1: 'A: Sim! Especifique o versionFile para cada projeto.',
+            faqQ2: 'Q: Qual é a performance com muitos addons?',
+            faqA2: 'A: Grid é otimizado, suporta centenas de templates sem lag.',
+            faqQ3: 'Q: Posso customizar o visual dos cartões?',
+            faqA3: 'A: Sim! TemplateCard aceita props de customização.',
+            faqQ4: 'Q: Há suporte à autenticação customizada?',
+            faqA4: 'A: Sim, herda auth do Backstage automaticamente.',
+            
+            // Slide 17: Closing
+            closingTitle: 'Obrigado!',
+            closingSubtitle: 'Dúvidas?',
+            closingGithub: 'K3T Backstage Plugins',
+            closingDocs: 'Documentação: README.md',
+            closingNPM: 'NPM: @k3tech/backstage-plugin-frontend-addons',
+            closingCTA: 'Comece Hoje Mesmo!',
+            closingCTADesc: 'Estenda seus componentes com o Entity Addons Plugin',
+        },
+        'en-US': {
+            // Page
+            pageTitle: 'Entity Addons Plugin - Presentation',
+            navHint: 'Use <strong>space</strong> or <strong>arrow keys</strong> to navigate',
+            
+            // Slide 1: Title
+            title: 'Entity Addons Plugin',
+            subtitle: 'Smart Marketplace of Addons for Backstage',
+            badgeBackstage: 'Backstage',
+            badgeTemplate: 'Template-based',
+            badgePlugin: 'Frontend Plugin',
+            presenterNote: 'K3T Backstage Plugin Frontend Addons',
+            
+            // Slide 2: Problem
+            problemTitle: 'The Problem',
+            problemItem1: 'Addon discovery is manual and tedious',
+            problemItem2: 'Lack of visual integration in Backstage',
+            problemItem3: 'Difficulty scaling and managing templates',
+            problemItem4: 'Need to pre-populate component data',
+            
+            // Slide 3: Solution
+            solutionTitle: 'The Solution',
+            solutionSubtitle: 'Entity Addons Plugin',
+            solutionItem1: 'Smart addon discovery',
+            solutionItem2: 'Visual integration with Backstage',
+            solutionItem3: 'Template-based marketplace',
+            solutionItem4: 'Automatic data pre-population',
+            
+            // Slide 4: Features
+            featuresTitle: 'Features',
+            featureTemplate: 'Template-based',
+            featureTemplateDesc: 'Create reusable templates',
+            featureScalable: 'Scalable',
+            featureFilter: 'Smart Filtering',
+            featureFilterDesc: 'Discover relevant addons',
+            featureSmart: 'Intelligent',
+            featureOneClick: 'One-Click',
+            featureOneClickDesc: 'Automated integration',
+            featureEasy: 'Easy',
+            
+            // Slide 5: Architecture
+            architectureTitle: 'Architecture & Template Binding',
+            architectureAnnotation: 'Component Annotation',
+            architectureTemplateOrigin: 'template-origin',
+            architectureDefines: 'Defines which template created the component',
+            architectureAddonAnnotation: 'Addon Annotation',
+            architectureSupportedBy: 'addon-of',
+            architectureIndicates: 'Indicates which template this addon extends',
+            
+            // Slide 6: Flow
+            flowTitle: 'How It Works',
+            flowStep1: 'View Component',
+            flowStep1Desc: 'Access the "Addons" tab on the component page',
+            flowStep2: 'Automatic Detection',
+            flowStep2Desc: 'Plugin reads template-origin annotation',
+            flowStep3: 'Query Catalog',
+            flowStep3Desc: 'Search templates with matching addon-of',
+            flowStep4: 'Display Addon Grid',
+            flowStep4Desc: 'Show available addon cards',
+            flowStep5: 'Click Addon',
+            flowStep5Desc: 'Scaffolder pre-populated with component_ref',
+            
+            // Slide 7: Installation
+            installationTitle: 'Installation',
+            installationStep1: 'Install via Yarn/NPM',
+            installationStep2: 'Integrate with EntityPage',
+            installationStep2Desc: 'File: packages/app/src/components/catalog/EntityPage.tsx',
+            installationStep3: 'Add Route',
+            installationStep3Desc: 'Create route "/addons" with EntityAddonsContent',
+            
+            // Slide 8: Code
+            codeTitle: 'Code: EntityPage.tsx',
+            
+            // Slide 9: Annotations
+            annotationsTitle: 'Binding Annotations',
+            annotationsStep1: 'Component: template-origin',
+            annotationsStep2: 'Template: addon-of',
+            
+            // Slide 10: Components
+            componentsTitle: 'Exported Components',
+            componentsEntityAddons: 'EntityAddonsContent',
+            componentsEntityAddonsDesc: 'Main component to display addons',
+            componentsProps: 'Props: variant',
+            componentsTemplateCard: 'TemplateCard',
+            componentsTemplateCardDesc: 'Individual template card',
+            componentsPropTemplate: 'Props: template',
+            componentsPlugin: 'entityAddonsPlugin',
+            componentsPluginDesc: 'Plugin factory function',
+            componentsAppIntegration: 'App integration',
+            componentsCardHeader: 'CardHeader',
+            componentsCardHeaderDesc: 'Template card header',
+            componentsSubComponent: 'Sub-component',
+            
+            // Slide 11: Example
+            exampleTitle: 'Example: Addon Template',
+            
+            // Slide 12: Best Practices
+            bestPracticesTitle: 'Best Practices',
+            bestPracticeName: 'Consistent Naming',
+            bestPracticeNameDesc: 'Use add-feature-name pattern for templates',
+            bestPracticeDesc: 'Clear Descriptions',
+            bestPracticeDescDesc: 'Explain what each addon does',
+            bestPracticeTest: 'Test Before Production',
+            bestPracticeTestDesc: 'Validate with example components',
+            bestPracticeMetadata: 'Complete Metadata',
+            bestPracticeMetadataDesc: 'Include tags, owner and lifecycle',
+            
+            // Slide 13: Troubleshooting
+            troubleshootingTitle: 'Troubleshooting',
+            troubleQ1: 'Addons not showing up?',
+            troubleA1: '✓ Check annotations match exactly<br>✓ Run catalog refresh<br>✓ Validate template YAML',
+            troubleQ2: 'Pre-population not working?',
+            troubleA2: '✓ Component must be accessible in catalog<br>✓ Check EntityPicker filters<br>✓ Validate URL encoding',
+            troubleQ3: 'Error rendering card?',
+            troubleA3: '✓ Inspect in browser (F12)<br>✓ Check browser console for errors<br>✓ Validate TemplateCard props',
+            
+            // Slide 14: Benefits
+            benefitsTitle: 'Benefits',
+            benefitsTechnical: 'Technical',
+            benefitsAutoDiscovery: 'Automatic discovery',
+            benefitsCodeless: 'Code-less integration',
+            benefitsReusability: 'Template reusability',
+            benefitsZeroDeps: 'Zero dependencies',
+            benefitsOrg: 'Organizational',
+            benefitsDX: 'Improved DX',
+            benefitsScalability: 'Scalability',
+            benefitsStandardization: 'Standardization',
+            benefitsEfficiency: 'Operational efficiency',
+            benefitsResult: 'Result',
+            benefitsMarketplace: 'Addon Marketplace integrated in Backstage',
+            
+            // Slide 15: Next Steps
+            nextStepsTitle: 'Next Steps',
+            nextStep1: 'Install Plugin',
+            nextStep1Desc: 'yarn add @k3tech/backstage-plugin-frontend-addons',
+            nextStep2: 'Integrate with EntityPage',
+            nextStep2Desc: 'Add route /addons with EntityAddonsContent',
+            nextStep3: 'Annotate Components',
+            nextStep3Desc: 'Add k3t.io/scaffolder-origin to catalog',
+            nextStep4: 'Create Addon Templates',
+            nextStep4Desc: 'Create templates with k3t/supported-by annotation',
+            
+            // Slide 16: FAQ
+            faqTitle: 'Frequently Asked Questions',
+            faqQ1: 'Q: Does it work with monorepos?',
+            faqA1: 'A: Yes! Specify versionFile for each project.',
+            faqQ2: 'Q: What is the performance with many addons?',
+            faqA2: 'A: Grid is optimized, supports hundreds of templates without lag.',
+            faqQ3: 'Q: Can I customize card visuals?',
+            faqA3: 'A: Yes! TemplateCard accepts customization props.',
+            faqQ4: 'Q: Is custom authentication supported?',
+            faqA4: 'A: Yes, inherits Backstage auth automatically.',
+            
+            // Slide 17: Closing
+            closingTitle: 'Thank You!',
+            closingSubtitle: 'Questions?',
+            closingGithub: 'K3T Backstage Plugins',
+            closingDocs: 'Documentation: README.md',
+            closingNPM: 'NPM: @k3tech/backstage-plugin-frontend-addons',
+            closingCTA: 'Get Started Today!',
+            closingCTADesc: 'Extend your components with the Entity Addons Plugin',
+        }
+    };
+
+    // Get saved language preference or default to browser language or pt-BR
+    function getSavedLanguage() {
+        const saved = localStorage.getItem('presentation-language');
+        if (saved && (saved === 'pt-BR' || saved === 'en-US')) {
+            return saved;
+        }
+        
+        const browserLang = navigator.language || navigator.userLanguage;
+        if (browserLang.startsWith('en')) {
+            return 'en-US';
+        }
+        return 'pt-BR';
+    }
+
+    let currentLanguage = getSavedLanguage();
+
+    // Translate function
+    function t(key) {
+        return translations[currentLanguage][key] || key;
+    }
+
+    // Get all translatable elements
+    function getAllTranslatableElements() {
+        return document.querySelectorAll('[data-i18n]');
+    }
+
+    // Update all translations on the page
+    function updatePageLanguage() {
+        // Update HTML lang attribute
+        document.getElementById('html-root').lang = currentLanguage;
+        
+        // Update page title
+        document.getElementById('page-title').textContent = t('pageTitle');
+        
+        // Update all elements with data-i18n attribute
+        getAllTranslatableElements().forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (key) {
+                element.textContent = t(key);
+            }
+        });
+        
+        // Update all elements with data-i18n-html attribute (for HTML content)
+        document.querySelectorAll('[data-i18n-html]').forEach(element => {
+            const key = element.getAttribute('data-i18n-html');
+            if (key) {
+                element.innerHTML = t(key);
+            }
+        });
+        
+        // Update language switcher buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-lang') === currentLanguage) {
+                btn.classList.add('active');
+            }
+        });
+
+        // Save preference
+        localStorage.setItem('presentation-language', currentLanguage);
+    }
+
+    // Event listeners for language switcher
+    document.addEventListener('DOMContentLoaded', function() {
+        // Setup language buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentLanguage = this.getAttribute('data-lang');
+                updatePageLanguage();
+            });
+        });
+
+        // Initial update
+        updatePageLanguage();
+    });
+</script>
+<script>
+    // ===== IMPRESS.JS AND ANIMATION SCRIPTS =====
     // Inicializar Impress.js
     impress().init();
 
