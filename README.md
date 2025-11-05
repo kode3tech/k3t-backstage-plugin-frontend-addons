@@ -4,6 +4,42 @@
 
 Este plugin frontend do Backstage permite uma experiência tipo marketplace para estender as capacidades de componentes através de templates de addons reutilizáveis. Filtra e exibe apenas addons relevantes para seus componentes com base na origem do template.
 
+---
+
+## 🎬 📊 Live Presentation Preview
+
+> **Interactive Presentation Available!** Watch our comprehensive guide covering architecture, setup, best practices, and more.
+>
+> 🌐 **Bilingual**: Portuguese (BR) & English | 📱 **Responsive** | 🎨 **Neon Theme** | ⌨️ **Keyboard Navigation**
+
+### ▶️ [**OPEN PRESENTATION** 🎥](./docs/presentation/index.html)
+
+<details>
+<summary><strong>Presentation Details</strong></summary>
+
+- **17 Interactive Slides** covering the entire plugin
+- **Language Switcher** in top-right corner (PT-BR / EN-US)
+- **Instant Language Switching** - your preference is saved
+- **Navigation**: Arrow keys or spacebar to navigate
+- **Content Includes**:
+  - Architecture & template binding system
+  - Installation & configuration
+  - API reference & components
+  - Real-world examples
+  - Best practices
+  - Troubleshooting guide
+  - FAQ section
+
+**Quick Tips:**
+- Press `F11` for fullscreen mode
+- Use arrow keys `←` `→` or spacebar to navigate
+- Click language buttons in top-right to switch
+- Available in Brazilian Portuguese (default) and English
+
+</details>
+
+---
+
 ## ✨ Características Principais
 
 - **🔌 Template-based Addons**: Crie templates de addons reutilizáveis que aprimoram componentes existentes
@@ -389,83 +425,6 @@ steps:
 - **Testing**: Test addon templates with sample components before promoting to production
 - **Git Workflow**: Use feature branches (e.g., `feat/addon-name`) to keep changes organized
 - **Metadata**: Include ownership and lifecycle information in component annotations for better governance
-
-## 🎬 Presentation Preview
-
-We have a comprehensive interactive presentation about the Entity Addons Plugin available!
-
-### 📊 Features
-- **17 Interactive Slides** covering everything from architecture to best practices
-- **🌐 Bilingual Support**: Available in Brazilian Portuguese (pt-BR) and English (en-US)
-- **🎨 Neon Theme**: Beautiful dark mode with interactive animations
-- **⌨️ Keyboard Navigation**: Use arrow keys or space to navigate slides
-
-### 🚀 Access the Presentation
-
-Open the presentation in your browser:
-```
-file:///path/to/docs/presentation/index.html
-```
-
-Or serve it with a local server:
-```bash
-cd docs/presentation
-python -m http.server 8000
-# Visit http://localhost:8000/index.html
-```
-
-### 📚 Slide Overview
-
-| Slide | Topic | Content |
-|-------|-------|---------|
-| 1 | **Title** | Introduction to Entity Addons Plugin |
-| 2 | **Problem** | Current challenges without addons |
-| 3 | **Solution** | How Entity Addons Plugin solves them |
-| 4 | **Features** | Key capabilities and benefits |
-| 5 | **Architecture** | Template binding system explained |
-| 6 | **Workflow** | Step-by-step integration flow |
-| 7 | **Installation** | Setup and configuration steps |
-| 8 | **Code** | EntityPage.tsx integration example |
-| 9 | **Annotations** | Binding annotation setup guide |
-| 10 | **Components** | Exported components API reference |
-| 11 | **Example** | Real-world addon template example |
-| 12 | **Best Practices** | Recommendations for addon development |
-| 13 | **Troubleshooting** | Common issues and solutions |
-| 14 | **Benefits** | Technical and organizational advantages |
-| 15 | **Next Steps** | Implementation roadmap |
-| 16 | **FAQ** | Frequently asked questions |
-| 17 | **Closing** | Summary and contact information |
-
-### 🌍 Language Switching
-
-The presentation supports instant language switching:
-
-**Brazilian Portuguese (pt-BR)**
-- Default language
-- Complete technical terminology
-- Native Brazilian Portuguese conventions
-
-**English (en-US)**
-- Professional English translations
-- Maintains technical accuracy
-- US English conventions
-
-Click the language buttons in the top-right corner to switch languages. Your preference is automatically saved!
-
-### 📖 Documentation
-
-For detailed information about the presentation's internationalization features, see:
-- [`docs/presentation/I18N.md`](docs/presentation/I18N.md) - Complete i18n guide
-- [`docs/presentation/INTERNATIONALIZATION_SUMMARY.md`](docs/presentation/INTERNATIONALIZATION_SUMMARY.md) - Quick reference
-- [`docs/presentation/IMPLEMENTATION_COMPLETE.md`](docs/presentation/IMPLEMENTATION_COMPLETE.md) - Implementation details
-
-### 💡 Tips for Presenting
-
-1. **Use Fullscreen**: Press `F11` or `F` for fullscreen mode
-2. **Speaker View**: Open DevTools (F12) to see notes if added
-3. **Navigation**: Use arrow keys ← → or space bar to navigate
-4. **Language**: Switch language mid-presentation by clicking language buttons
-5. **Keyboard Shortcuts**: Most modern browsers support presentation mode
 
 ## Contributing
 
