@@ -34,7 +34,7 @@ export function EntityAddonsComponent(_props: any) {
   useEffect(() => {
     catalogApi.getEntities({
       filter:{
-        ["metadata.annotations.k3t/supported-by"]: `${templateRef}`
+        ["metadata.annotations.k3t.io/supported-by"]: `${templateRef}`
       }
     })
     .then(result => {
