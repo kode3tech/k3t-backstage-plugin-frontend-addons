@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.1](https://github.com/kode3tech/k3t-backstage-plugin-frontend-addons/compare/v1.6.0...v1.6.1) (2025-11-05)
+
+
+### Bug Fixes
+
+* update annotation prefix from k3t/supported-by to k3t.io/supported-by in documentation and code ([9ada1f5](https://github.com/kode3tech/k3t-backstage-plugin-frontend-addons/commit/9ada1f59ff52cd438a5b33ff724924c1739997a9))
+
 ## [1.6.0](https://github.com/kode3tech/k3t-backstage-plugin-frontend-addons/compare/v0.1.13...v1.6.0) (2025-11-05)
 
 
