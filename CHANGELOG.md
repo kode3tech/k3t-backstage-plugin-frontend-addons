@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.3](https://github.com/kode3tech/k3t-backstage-plugin-frontend-addons/compare/v1.6.2...v1.6.3) (2025-11-07)
+
+
+### Bug Fixes
+
+* update component_ref to entity_ref in documentation and code ([5d38f99](https://github.com/kode3tech/k3t-backstage-plugin-frontend-addons/commit/5d38f991921b8deb359fb5620d92d01a2e898b89))
+
 ### [1.6.2](https://github.com/kode3tech/k3t-backstage-plugin-frontend-addons/compare/v1.6.1...v1.6.2) (2025-11-06)
 
 ### [1.6.1](https://github.com/kode3tech/k3t-backstage-plugin-frontend-addons/compare/v1.6.0...v1.6.1) (2025-11-05)
