@@ -1343,7 +1343,7 @@ code {
                 <div class="setup-step">
                     <span class="step-number">5</span>
                     <h3 data-i18n="flowStep5">Clicar no Addon</h3>
-                    <p data-i18n="flowStep5Desc">Scaffolder pré-populado com component_ref</p>
+                    <p data-i18n="flowStep5Desc">Scaffolder pré-populado com entity_ref</p>
                 </div>
             </div>
         </div>
@@ -1486,7 +1486,7 @@ spec:
   parameters:
     - title: Target Component
       properties:
-        component_ref:
+        entity_ref:
           title: Select Component
           type: string
           ui:field: EntityPicker
@@ -1494,7 +1494,7 @@ spec:
     - id: fetch_component
       action: catalog:fetch
       input:
-        entityRef: ${{ parameters.component_ref }}
+        entityRef: ${{ parameters.entity_ref }}
     
     - id: apply_monitoring
       action: fetch:template
@@ -1736,7 +1736,7 @@ spec:
             flowStep4: 'Exibir Grid de Addons',
             flowStep4Desc: 'Mostra cartões dos addons disponíveis',
             flowStep5: 'Clicar no Addon',
-            flowStep5Desc: 'Scaffolder pré-populado com component_ref',
+            flowStep5Desc: 'Scaffolder pré-populado com entity_ref',
             
             // Slide 7: Installation
             installationTitle: 'Instalação',
@@ -1898,7 +1898,7 @@ spec:
             flowStep4: 'Display Addon Grid',
             flowStep4Desc: 'Show available addon cards',
             flowStep5: 'Click Addon',
-            flowStep5Desc: 'Scaffolder pre-populated with component_ref',
+            flowStep5Desc: 'Scaffolder pre-populated with entity_ref',
             
             // Slide 7: Installation
             installationTitle: 'Installation',

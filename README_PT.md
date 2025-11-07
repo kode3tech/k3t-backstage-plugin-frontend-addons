@@ -85,7 +85,7 @@ This plugin uses an **intelligent two-level template binding system**:
 
 3. **Addon Discovery** (Smart Query): When viewing the "Addons" tab, the plugin queries the catalog for matching templates
    
-4. **Pre-filled Scaffolder** (Automatic Integration): Clicking an addon pre-populates the scaffolder with the component reference as `component_ref`
+4. **Pre-filled Scaffolder** (Automatic Integration): Clicking an addon pre-populates the scaffolder with the component reference as `entity_ref`
 
 ## 📦 Installation
 
@@ -154,9 +154,9 @@ spec:
   parameters:
     - title: 🎯 Target Configuration
       required:
-        - component_ref
+        - entity_ref
       properties:
-        component_ref:
+        entity_ref:
           title: Select Component
           type: string
           description: Which microservice do you want to monitor?
@@ -189,7 +189,7 @@ spec:
       name: 📦 Fetch Component Information
       action: catalog:fetch
       input:
-        entityRef: ${{ parameters.component_ref }}
+        entityRef: ${{ parameters.entity_ref }}
 
     - id: clone_repo
       name: 🔄 Clone Repository
@@ -222,7 +222,7 @@ spec:
     links:
       - title: 📊 View Component in Catalog
         icon: catalog
-        entityRef: ${{ parameters.component_ref }}
+        entityRef: ${{ parameters.entity_ref }}
       - title: 🔧 Repository
         url: ${{ steps.fetch_component.output.entity.metadata.annotations["backstage.io/repo-url"] }}
 ```
@@ -266,9 +266,9 @@ spec:
   parameters:
     - title: Select Target Component
       required:
-        - component_ref
+        - entity_ref
       properties:
-        component_ref:
+        entity_ref:
           title: Component to Enhance
           type: string
           ui:field: EntityPicker
@@ -294,7 +294,7 @@ spec:
       name: Fetch Component Repository Info
       action: catalog:fetch
       input:
-        entityRef: ${{ parameters.component_ref }}
+        entityRef: ${{ parameters.entity_ref }}
 
     - id: clone
       name: Clone Repository
@@ -325,7 +325,7 @@ spec:
     links:
       - title: View Component
         icon: catalog
-        entityRef: ${{ parameters.component_ref }}
+        entityRef: ${{ parameters.entity_ref }}
       - title: Repository
         url: ${{ steps.fetch_component.output.entity.metadata.annotations["backstage.io/repo-url"] }}
 ```
@@ -392,7 +392,7 @@ steps:
     name: Load Component Details
     action: catalog:fetch
     input:
-      entityRef: ${{ parameters.component_ref }}
+      entityRef: ${{ parameters.entity_ref }}
 
   - id: apply_addon
     name: Apply Based on Component Type
