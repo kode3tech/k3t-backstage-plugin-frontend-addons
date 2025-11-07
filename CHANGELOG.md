@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.4](https://github.com/kode3tech/k3t-backstage-plugin-frontend-addons/compare/v1.6.3...v1.6.4) (2025-11-07)
+
 ### [1.6.3](https://github.com/kode3tech/k3t-backstage-plugin-frontend-addons/compare/v1.6.2...v1.6.3) (2025-11-07)
 
 
