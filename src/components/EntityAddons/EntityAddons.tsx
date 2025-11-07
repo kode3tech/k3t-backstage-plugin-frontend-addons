@@ -69,8 +69,8 @@ export function EntityAddonsComponent(_props: any) {
                     
                     // Then in your code:
                     entity_ref = env.renderString(custom_entity_ref, {
-                      template: t,
-                      entity,
+                      t,
+                      e: entity,
                     });
                   }
                 } catch (error) {
