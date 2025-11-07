@@ -89,7 +89,7 @@ export function EntityAddonsComponent(_props: any) {
                     '* See entity yaml format in https://backstage.io/docs/features/software-catalog/descriptor-format#overall-shape-of-an-entity for examples.'
                   ].join('\n'))
                 }
-                window.open(`/create/templates/${t.metadata.namespace}/${t.metadata.name}?formData={%22entity_ref%22:%22${entity_ref}%22}`,)
+                window.open(`/create/templates/${t.metadata.namespace}/${t.metadata.name}?formData={%22entity_ref%22:%22${encodeURIComponent(entity_ref)}%22}`,)
               }}
             />
           ))}
