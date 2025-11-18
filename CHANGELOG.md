@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/kode3tech/k3t-backstage-plugin-frontend-addons/compare/v1.6.5...v2.0.0) (2025-11-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* suports multiple compatibilities
+
+### Features
+
+* suports multiple compatibilities ([a355384](https://github.com/kode3tech/k3t-backstage-plugin-frontend-addons/commit/a3553848b36e7aec0a92a3a2e4075e7b5df4aa67))
+
 ### [1.6.5](https://github.com/kode3tech/k3t-backstage-plugin-frontend-addons/compare/v1.6.4...v1.6.5) (2025-11-07)
 
 
