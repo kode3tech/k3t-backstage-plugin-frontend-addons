@@ -1301,14 +1301,17 @@ code {
             <div class="grid-2">
                 <div class="method-card">
                     <h3><i class="fas fa-tag icon-purple"></i> <span data-i18n="architectureAnnotation">Anotação de Componente</span></h3>
-                    <pre class="code-block"><code class="language-yaml">k3t.io/scaffolder-origin:
-  template:default/microservice-template</code></pre>
+                    <pre class="code-block"><code class="language-yaml">metadata:
+  k3t.io:
+    scaffolder-origin: template:...</code></pre>
                     <p class="note" data-i18n="architectureDefines">Define qual template criou o componente</p>
                 </div>
                 <div class="method-card">
                     <h3><i class="fas fa-link icon-yellow"></i> <span data-i18n="architectureAddonAnnotation">Anotação de Addon</span></h3>
-                    <pre class="code-block"><code class="language-yaml">k3t.io/supported-by:
-  template:default/microservice-template</code></pre>
+                    <pre class="code-block"><code class="language-yaml">metadata:
+  k3t:
+    addon-compatible-to:
+      - template:...</code></pre>
                     <p class="note" data-i18n="architectureIndicates">Indica qual template este addon estende</p>
                 </div>
             </div>
@@ -1413,8 +1416,8 @@ const defaultEntityPage = (
                     <pre class="code-block mini"><code class="language-yaml">kind: Component
 metadata:
   name: my-service
-  annotations:
-    k3t.io/scaffolder-origin: \
+  k3t.io:
+    scaffolder-origin: \
       template:default/microservice-template</code></pre>
                 </div>
                 <div class="setup-step">
@@ -1423,9 +1426,9 @@ metadata:
                     <pre class="code-block mini"><code class="language-yaml">kind: Template
 metadata:
   name: add-monitoring
-  annotations:
-    k3t.io/supported-by: \
-      template:default/microservice-template</code></pre>
+  k3t:
+    addon-compatible-to:
+      - template:default/microservice-template</code></pre>
                 </div>
             </div>
         </div>
@@ -1479,9 +1482,9 @@ kind: Template
 metadata:
   name: add-monitoring
   title: 📊 Add Monitoring
-  annotations:
-    k3t.io/supported-by: \
-      template:default/microservice-template
+  k3t:
+    addon-compatible-to:
+      - template:default/microservice-template
 spec:
   parameters:
     - title: Target Component
@@ -1606,7 +1609,7 @@ spec:
                 <div class="next-step">
                     <span class="step-icon"><i class="fas fa-tag" style="font-size: 24px;"></i></span>
                     <h3>3. <span data-i18n="nextStep3">Anotar Componentes</span></h3>
-                    <p data-i18n="nextStep3Desc">Adicionar k3t.io/scaffolder-origin ao catalog</p>
+                    <p data-i18n="nextStep3Desc">Adicionar metadata.k3t.io.scaffolder-origin ao catalog</p>
                 </div>
                 <div class="next-step">
                     <span class="step-icon"><i class="fas fa-plus" style="font-size: 24px;"></i></span>
@@ -1814,7 +1817,7 @@ spec:
             nextStep2: 'Integrar ao EntityPage',
             nextStep2Desc: 'Adicionar rota /addons com EntityAddonsContent',
             nextStep3: 'Anotar Componentes',
-            nextStep3Desc: 'Adicionar k3t.io/scaffolder-origin ao catalog',
+            nextStep3Desc: 'Adicionar metadata.k3t.io.scaffolder-origin ao catalog',
             nextStep4: 'Criar Templates de Addons',
             nextStep4Desc: 'Criar templates com anotação k3t.io/supported-by',
             
@@ -1976,7 +1979,7 @@ spec:
             nextStep2: 'Integrate with EntityPage',
             nextStep2Desc: 'Add route /addons with EntityAddonsContent',
             nextStep3: 'Annotate Components',
-            nextStep3Desc: 'Add k3t.io/scaffolder-origin to catalog',
+            nextStep3Desc: 'Add metadata.k3t.io.scaffolder-origin to catalog',
             nextStep4: 'Create Addon Templates',
             nextStep4Desc: 'Create templates with k3t.io/supported-by annotation',
             

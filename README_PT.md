@@ -73,14 +73,19 @@ This plugin uses an **intelligent two-level template binding system**:
 
 **How It Works:**
 
-1. **Template Origin** (Component Annotation): Stores which template was used to create the component
+1. **Template Origin** (Component Metadata): Stores which template was used to create the component
    ```yaml
-   k3t.io/scaffolder-origin: template:default/microservice-template
+   metadata:
+     k3t.io:
+       scaffolder-origin: template:default/microservice-template
    ```
 
-2. **Addon Templates** (Scaffolder Templates): Templates marked with `k3t.io/supported-by` that reference the origin
+2. **Addon Templates** (Scaffolder Templates): Templates marked with `metadata.k3t.addon-compatible-to` (array) that reference the origin
    ```yaml
-   k3t.io/supported-by: template:default/microservice-template
+   metadata:
+     k3t:
+       addon-compatible-to:
+         - template:default/microservice-template
    ```
 
 3. **Addon Discovery** (Smart Query): When viewing the "Addons" tab, the plugin queries the catalog for matching templates
@@ -121,8 +126,9 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: my-microservice
+  k3t.io:
+    scaffolder-origin: template:default/microservice-template
   annotations:
-    k3t.io/scaffolder-origin: template:default/microservice-template
     backstage.io/repo-url: https://github.com/my-org/my-microservice
 spec:
   type: service
@@ -132,7 +138,7 @@ spec:
 
 ### Step 3: Create Addon Templates
 
-Create scaffolder templates with the `k3t.io/supported-by` annotation:
+Create scaffolder templates with the `metadata.k3t.addon-compatible-to` field:
 
 ```yaml
 apiVersion: scaffolder.backstage.io/v1beta3
@@ -141,8 +147,9 @@ metadata:
   name: add-monitoring
   title: 📊 Add Monitoring & Observability
   description: Integrate Prometheus, Grafana and intelligent alerts
-  annotations:
-    k3t.io/supported-by: template:default/microservice-template
+  k3t:
+    addon-compatible-to:
+      - template:default/microservice-template
   tags:
     - monitoring
     - observability
@@ -167,7 +174,7 @@ spec:
               - Component
             catalogFilter:
               - kind: ['Component']
-                'metadata.annotations.k3t.io/scaffolder-origin': 'template:default/microservice-template'
+                'metadata.k3t.io.scaffolder-origin': 'template:default/microservice-template'
         
         monitoring_tool:
           title: 🔧 Monitoring Tool
@@ -233,7 +240,7 @@ spec:
 
 Two key annotations enable the plugin's functionality:
 
-#### Component Annotation: `k3t.io/scaffolder-origin`
+#### Component Annotation: `metadata.k3t.io.scaffolder-origin`
 Applied to components to specify which template they were created from:
 
 ```yaml
@@ -241,16 +248,17 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: my-service
+  k3t.io:
+    scaffolder-origin: template:default/microservice-template
   annotations:
-    k3t.io/scaffolder-origin: template:default/microservice-template
     backstage.io/repo-url: https://github.com/my-org/my-service
 spec:
   type: service
   owner: my-team
 ```
 
-#### Template Annotation: `k3t.io/supported-by`
-Applied to addon templates to indicate which component template they extend:
+#### Template Annotation: `metadata.k3t.addon-compatible-to`
+Applied to addon templates to indicate which component template origin they are compatible with:
 
 ```yaml
 apiVersion: scaffolder.backstage.io/v1beta3
@@ -259,8 +267,9 @@ metadata:
   name: add-monitoring
   title: Add Monitoring
   description: Add monitoring and observability to microservices
-  annotations:
-    k3t.io/supported-by: template:default/microservice-template
+  k3t:
+    addon-compatible-to:
+      - template:default/microservice-template
 spec:
   type: Service
   parameters:

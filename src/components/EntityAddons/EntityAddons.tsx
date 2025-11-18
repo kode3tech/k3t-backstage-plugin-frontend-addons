@@ -7,6 +7,17 @@ import { TemplateCard } from '../TemplateCard';
 
 import React, { useEffect, useState } from 'react';
 import { Environment } from 'nunjucks';
+export type  K3tMetadataAnnotations  = Entity & {
+  metadata: {
+    /** @deprecated Use metadata.k3t.io.scaffolder-origin instead */
+    template?: string,
+    'k3t.io'?: {
+      'scaffolder-origin'?: string,
+      'addon-compatible-to'?: string[],
+      'addon-custom-entity-ref'?: string,
+    }
+  }
+}
 
 export function EntityAddonsComponent(_props: any) {
   const { entity } = useEntity() || { entity: { metadata: {} } };
@@ -15,17 +26,16 @@ export function EntityAddonsComponent(_props: any) {
     metadata: {
       name,
       namespace,
-      template,
-      annotations
+      ['k3t.io']: k3tAnnotations
     }
-  } = entity;
+  } = entity as K3tMetadataAnnotations;
   
   const catalogApi = useApi(catalogApiRef);
   const [addons, setAddons] = useState<Entity[]>([])
 
-  const templateRef = annotations?.['k3t.io/scaffolder-origin'] ?? template ?? name ?? `template:default/${name}`;
-
-  let [, templateKind, templateNamespace, templateName] = /([\w\d-]+:)?([\w\d-]+\/)?([\w\d-]+)$/.exec(templateRef.toString()) ?? [];
+  const scaffolderOrigin = k3tAnnotations?.['scaffolder-origin'] || `${kind.toLowerCase()}:${namespace || 'default'}/${name}`;
+  
+  let [, templateKind, templateNamespace, templateName] = /([\w\d-]+:)?([\w\d-]+\/)?([\w\d-]+)$/.exec(scaffolderOrigin.toString()) ?? [];
 
   templateKind = (templateKind ?? 'template:').replace(':', '')
   templateNamespace = (templateNamespace ?? 'default/').replace('/', '')
@@ -34,14 +44,13 @@ export function EntityAddonsComponent(_props: any) {
   useEffect(() => {
     catalogApi.getEntities({
       filter:{
-        ["metadata.annotations.k3t.io/supported-by"]: `${templateRef}`
+        ["metadata.k3t.addon-compatible-to"]: `${scaffolderOrigin}`
       }
-    })
-    .then(result => {
+    }).then(result => {
       setAddons(result.items)
     })
     .catch(void 0);
-  }, [catalogApi, templateRef, setAddons])
+  }, [catalogApi, scaffolderOrigin, setAddons])
   
   return (
     (
@@ -53,14 +62,14 @@ export function EntityAddonsComponent(_props: any) {
               key={stringifyEntityRef(addon)}
               // additionalLinks={additionalLinks}
               template={addon as any}
-              onSelected={(t) => {
+              onSelected={(t: K3tMetadataAnnotations) => {
                 let entity_ref = stringifyEntityRef({
                   kind: kind,
                   namespace: namespace || 'default',
                   name: name || '',
                 });
                 
-                const custom_entity_ref = t.metadata?.annotations?.['k3t.io/addon-custom-ref-template'];
+                const custom_entity_ref = t.metadata?.['k3t.io']?.['addon-custom-entity-ref'];
                 
                 try {
                   if (custom_entity_ref) {  
@@ -75,7 +84,7 @@ export function EntityAddonsComponent(_props: any) {
                   }
                 } catch (error) {
                   console.error([
-                    `Error processing 'k3t.io/addon-custom-ref-template' annotation for addon:`,
+                    `Error processing 'metadata.[k3t.io].addon-custom-entity-ref' for addon:`,
                     `\tTemplate: ${stringifyEntityRef(t)}`,
                     `\tEntity Ref expression: ${custom_entity_ref}`,
                     `Error:`,
