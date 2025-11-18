@@ -42,12 +42,20 @@ export function EntityAddonsComponent(_props: any) {
   templateName = (templateName ?? `${name}`)
 
   useEffect(() => {
-    catalogApi.getEntities({
-      filter:{
-        ["metadata.k3t.addon-compatible-to"]: `${scaffolderOrigin}`
-      }
-    }).then(result => {
-      setAddons(result.items)
+    Promise.all([
+      catalogApi.getEntities({
+        filter:{
+          ["metadata.k3t.addon-compatible-to"]: `${scaffolderOrigin}`
+        }
+      }),
+      catalogApi.getEntities({
+        filter:{
+          ["metadata.k3t.addon-compatible-to"]: `any`
+        }
+      })  
+    ])
+    .then(result => {
+      setAddons([...result[0].items, ...result[1].items])
     })
     .catch(void 0);
   }, [catalogApi, scaffolderOrigin, setAddons])
