@@ -46,12 +46,12 @@ export function EntityAddonsComponent(_props: any) {
     Promise.all([
       catalogApi.getEntities({
         filter:{
-          ["metadata.k3t.addon-compatible-to"]: `${scaffolderOrigin}`
+          ["metadata.k3t.io.addon-compatible-to"]: `${scaffolderOrigin}`
         }
       }),
       catalogApi.getEntities({
         filter:{
-          ["metadata.k3t.addon-compatible-to"]: `any`
+          ["metadata.k3t.io.addon-compatible-to"]: `any`
         }
       })  
     ])
