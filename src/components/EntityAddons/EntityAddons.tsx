@@ -26,6 +26,7 @@ export function EntityAddonsComponent(_props: any) {
     metadata: {
       name,
       namespace,
+      annotations,
       ['k3t.io']: k3tAnnotations
     }
   } = entity as K3tMetadataAnnotations;
@@ -33,7 +34,7 @@ export function EntityAddonsComponent(_props: any) {
   const catalogApi = useApi(catalogApiRef);
   const [addons, setAddons] = useState<Entity[]>([])
 
-  const scaffolderOrigin = k3tAnnotations?.['scaffolder-origin'] || `${kind.toLowerCase()}:${namespace || 'default'}/${name}`;
+  const scaffolderOrigin = k3tAnnotations?.['scaffolder-origin'] || annotations?.['k3t.io/scaffolder-origin'] || `${kind.toLowerCase()}:${namespace || 'default'}/${name}`;
   
   let [, templateKind, templateNamespace, templateName] = /([\w\d-]+:)?([\w\d-]+\/)?([\w\d-]+)$/.exec(scaffolderOrigin.toString()) ?? [];
 
